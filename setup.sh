@@ -1,6 +1,7 @@
 source /~/vagrant/.sandbox.conf.sh
 
-
+$1 = PATH_TO_SNMP
+$2 = CONF_SNMP
 echo api key ${DD_API_KEY}
 echo "Installing Datadog Agent 7 from api_key: ${DD_API_KEY} but not starting it yet"
 
@@ -16,6 +17,10 @@ export LC_ALL=en_US.UTF-8
 
 echo "Set log level of the datadog agent to TRACE"
 echo 'log_level: trace'| sudo tee -a /etc/datadog-agent/datadog.yaml
+echo "Adding custom SNMP profile"
+cat ${PATH_TO_SNMP} | sudo tee -a /etc/datadog-agent/snmp.d/profiles/custom_profile.yaml
+cat ${CONF_SNMP} | sudo tee -a /etc/datadog-agent/snmp.d/conf.yaml
+
 
 
 
