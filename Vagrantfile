@@ -1,6 +1,6 @@
 Vagrant.configure("2") do |config|
-  config.vm.box = "ubuntu/trusty64"
-
+  config.vm.box = "uwbbi/bionic-arm64"
+  config.vm.network "forwarded_port", guest: 8125, host: 8125, auto_correct: true
   #config.vm.provider "vmware_fusion" do |v|
   config.vm.provider 'virtualbox' do |v|
   end
