@@ -1,0 +1,25 @@
+version: '3.5'
+
+services:
+  snmp:
+    container_name: dd-snmp
+    image: "tandrup/snmpsim:latest"
+    ports:
+      - "161:161/udp"
+    volumes:
+      # - ./data-icore/:/usr/local/share/snmpsim/data
+      - ./data/:/usr/local/share/snmpsim/data
+    #labels:
+     # com.datadoghq.ad.check_names: '["snmp"]'
+      #com.datadoghq.ad.init_configs: '[{}]'
+      #com.datadoghq.ad.instances: |
+       # [
+       # { "ip_address": "%%host%%", "port": "161", "community_string": "ipsec" }
+       # ]
+    networks:
+      - my-net
+
+
+networks:
+  my-net:
+    external: true
