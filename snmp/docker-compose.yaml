@@ -7,7 +7,7 @@ services:
     ports:
       - "161:161/udp"
     volumes:
-      # - ./data-icore/:/usr/local/share/snmpsim/data
+      - ./data-icore/:/usr/local/share/snmpsim/data
       - ./data/:/usr/local/share/snmpsim/data
     #labels:
      # com.datadoghq.ad.check_names: '["snmp"]'
