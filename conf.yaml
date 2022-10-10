@@ -2,15 +2,15 @@
 init_config:
 
 
-    loader: core
+  loader: core
 
     
-    use_device_id_as_hostname: true
+  use_device_id_as_hostname: true
 
     
-    profiles:
-      custom_test:
-        definition_file: custom_profile.yaml
+  profiles:
+    custom_test:
+      definition_file: custom_profile.yaml
     
 
 
