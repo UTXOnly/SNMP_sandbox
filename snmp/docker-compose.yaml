@@ -17,9 +17,9 @@ services:
        # { "ip_address": "%%host%%", "port": "161", "community_string": "ipsec" }
        # ]
     networks:
-      - my-net
+      - test-net
 
 
 networks:
-  my-net:
+  test-net:
     external: true

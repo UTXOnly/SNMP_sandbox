@@ -7,6 +7,7 @@ echo "sleep finished"
 
 cd ./snmp
 echo "changed directory"
+docker network create test-net
 docker-compose build --no-cache
 docker-compose up -d 
 echo "docker up"

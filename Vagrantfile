@@ -6,6 +6,8 @@ Vagrant.configure("2") do |config|
   end
 
   config.vm.synced_folder "./data", "/data", create: true
-  config.vm.provision :file, source: '~/.sandbox.conf.sh', destination: '~/vagrant/.sandbox.conf.sh'
+  config.vm.provision :file, source: "./test_profile.yaml", destination: "/home/vagrant/test_profile.yaml"
+  config.vm.provision :file, source: '~/.sandbox.conf.sh', destination: '/home/vagrant/.sandbox.conf.sh'
+  config.vm.provision :file, source: './conf.yaml', destination: '/home/vagrant/conf.yaml'
   config.vm.provision "shell", path: "setup.sh"
 end

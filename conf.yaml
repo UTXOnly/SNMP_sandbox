@@ -1,30 +1,23 @@
 
 init_config:
-
-
   loader: core
-
-    
   use_device_id_as_hostname: true
-
-    
   profiles:
-    custom_test:
-      definition_file: custom_profile.yaml
+    my-profile:
+      definition_file: test_profile.yaml
     
 
 
 instances:
 
-  - ip_address: 127.0.0.1
-
-   
-    loader: core
-
-    community_string: ipsec
-    use_device_id_as_hostname: true
+- ip_address: 127.0.0.1
+  snmp_version: 2
+  profile: my-profile
+    #loader: core
+  community_string: ipsec
+  use_device_id_as_hostname: true
 
     
-    profile: sample_custom_profile
+    
 
     
