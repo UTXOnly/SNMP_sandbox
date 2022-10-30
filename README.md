@@ -34,6 +34,9 @@ The run script simply builds fresh Docker images each instance, leveraging the d
   * `git clone git@github.com:UTXOnly/SNMP_sandbox.git`
   * `cp <Filepath_to_conf.yaml>/conf.yaml ./conf.yaml`
   * `cp <Filepath_to_test_profile.yaml>/conf.yaml ./_test_profile.yaml`
+  * `echo "DD_API_KEY=<YOUR_API_KEY_HERE>" > ./snmp/.env
+
+[Gif of run scripts](https://a.cl.ly/xQux8w5P)
 
 
 ## Configuration Notes
