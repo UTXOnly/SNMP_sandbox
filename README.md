@@ -2,7 +2,10 @@
 A sandbox environment for testing custom SNMP profiles with Datadog Network Device Management. By adding your own Datadog API key to an `.env` file and then running a simple run command, you can validate your custom SNMP profile with the help of a mock SNMP device running in another Docker container.
 
 ##### Use Case
-To validate custom SNMP profiles along with Datadog agent configuration.
+To validate custom SNMP profiles along with Datadog agent configuration
+* Validate `conf.yaml` and `custom_profile` configuration in Datadog agent
+* Simulate a SNNP device being polled and reporting metrics to Datadog agent
+* Validate tags used and test custom dashboards
 
 ## How to Use
 
