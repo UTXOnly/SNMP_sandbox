@@ -1,0 +1,23 @@
+
+init_config:
+  loader: core
+  use_device_id_as_hostname: true
+  profiles:
+    custom-profile:
+      definition_file: _test_profile.yaml
+      
+instances:
+
+- ip_address: host.docker.internal
+  snmp_version: 2
+  profile: custom-profile
+  loader: core
+  community_string: 'mockSNMP'
+  use_device_id_as_hostname: true
+  
+  
+
+    
+    
+
+    

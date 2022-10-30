@@ -1,0 +1,325 @@
+metric_tags:
+  - OID: 1.3.6.1.2.1.1.5.0
+    symbol: sysName
+    tag: snmp_host
+
+metadata:
+  device:
+    fields:
+      vendor:
+        value: "cisco"
+      name:
+        symbol:
+          OID: 1.3.6.1.2.1.1.5.0
+          name: sysName
+      description:
+        symbol:
+          OID: 1.3.6.1.2.1.1.1.0
+          name: sysDescr
+      sys_object_id:
+        symbol:
+          OID: 1.3.6.1.2.1.1.2.0
+          name: sysObjectID
+      location:
+        symbol:
+          OID: 1.3.6.1.2.1.1.6.0
+          name: sysLocation
+
+metrics:
+- MIB: IF-MIB
+  symbol:
+    OID: 1.3.6.1.2.1.2.1.0
+    name: ifNumber
+
+- MIB: IF-MIB
+  table:
+    OID: 1.3.6.1.2.1.2.2
+    name: ifTable
+  forced_type: monotonic_count_and_rate
+  symbols:
+  - OID: 1.3.6.1.2.1.2.2.1.14
+    name: ifInErrors
+  - OID: 1.3.6.1.2.1.2.2.1.13
+    name: ifInDiscards
+  - OID: 1.3.6.1.2.1.2.2.1.20
+    name: ifOutErrors
+  - OID: 1.3.6.1.2.1.2.2.1.19
+    name: ifOutDiscards
+  metric_tags:
+  - column:
+      OID: 1.3.6.1.2.1.31.1.1.1.1
+      name: ifName
+    table: ifXTable
+    tag: interface
+  - column:
+      OID: 1.3.6.1.2.1.31.1.1.1.18
+      name: ifAlias
+    table: ifXTable
+    tag: interface_alias
+- MIB: IF-MIB
+  table:
+    OID: 1.3.6.1.2.1.2.2
+    name: ifTable
+  symbols:
+  - OID: 1.3.6.1.2.1.2.2.1.7
+    name: ifAdminStatus
+  - OID: 1.3.6.1.2.1.2.2.1.8
+    name: ifOperStatus
+  - OID: 1.3.6.1.2.1.2.2.1.5
+    name: ifSpeed
+  metric_tags:
+  - column:
+      OID: 1.3.6.1.2.1.31.1.1.1.1
+      name: ifName
+    table: ifXTable
+    tag: interface
+  - column:
+      OID: 1.3.6.1.2.1.31.1.1.1.18
+      name: ifAlias
+    table: ifXTable
+    tag: interface_alias
+- MIB: IF-MIB
+  table:
+    OID: 1.3.6.1.2.1.31.1.1
+    name: ifXTable
+  forced_type: monotonic_count
+  symbols:
+  - OID: 1.3.6.1.2.1.31.1.1.1.7
+    name: ifHCInUcastPkts
+  - OID: 1.3.6.1.2.1.31.1.1.1.8
+    name: ifHCInMulticastPkts
+  - OID: 1.3.6.1.2.1.31.1.1.1.9
+    name: ifHCInBroadcastPkts
+  - OID: 1.3.6.1.2.1.31.1.1.1.11
+    name: ifHCOutUcastPkts
+  - OID: 1.3.6.1.2.1.31.1.1.1.12
+    name: ifHCOutMulticastPkts
+  - OID: 1.3.6.1.2.1.31.1.1.1.13
+    name: ifHCOutBroadcastPkts
+  metric_tags:
+  - column:
+      OID: 1.3.6.1.2.1.31.1.1.1.1
+      name: ifName
+    tag: interface
+  - column:
+      OID: 1.3.6.1.2.1.31.1.1.1.18
+      name: ifAlias
+    table: ifXTable
+    tag: interface_alias
+- MIB: IF-MIB
+  table:
+    OID: 1.3.6.1.2.1.31.1.1
+    name: ifXTable
+  forced_type: monotonic_count_and_rate
+  symbols:
+  - OID: 1.3.6.1.2.1.31.1.1.1.6
+    name: ifHCInOctets
+  - OID: 1.3.6.1.2.1.31.1.1.1.10
+    name: ifHCOutOctets
+  metric_tags:
+  - column:
+      OID: 1.3.6.1.2.1.31.1.1.1.1
+      name: ifName
+    tag: interface
+  - column:
+      OID: 1.3.6.1.2.1.31.1.1.1.18
+      name: ifAlias
+    table: ifXTable
+    tag: interface_alias
+- MIB: IF-MIB
+  table:
+    OID: 1.3.6.1.2.1.31.1.1
+    name: ifXTable
+  symbols:
+  - OID: 1.3.6.1.2.1.31.1.1.1.15
+    name: ifHighSpeed
+  metric_tags:
+  - column:
+      OID: 1.3.6.1.2.1.31.1.1.1.1
+      name: ifName
+    tag: interface
+  - column:
+      OID: 1.3.6.1.2.1.31.1.1.1.18
+      name: ifAlias
+    table: ifXTable
+    tag: interface_alias
+
+
+# Generic IP metrics.
+
+#metrics:
+- MIB: IP-MIB
+  table:
+    OID: 1.3.6.1.2.1.4.31.1
+    name: ipSystemStatsTable
+  forced_type: monotonic_count
+  symbols:
+  - OID: 1.3.6.1.2.1.4.31.1.1.4
+    name: ipSystemStatsHCInReceives
+  - OID: 1.3.6.1.2.1.4.31.1.1.6
+    name: ipSystemStatsHCInOctets
+  - OID: 1.3.6.1.2.1.4.31.1.1.7
+    name: ipSystemStatsInHdrErrors
+  - OID: 1.3.6.1.2.1.4.31.1.1.8
+    name: ipSystemStatsInNoRoutes
+  - OID: 1.3.6.1.2.1.4.31.1.1.9
+    name: ipSystemStatsInAddrErrors
+  - OID: 1.3.6.1.2.1.4.31.1.1.10
+    name: ipSystemStatsInUnknownProtos
+  - OID: 1.3.6.1.2.1.4.31.1.1.11
+    name: ipSystemStatsInTruncatedPkts
+  - OID: 1.3.6.1.2.1.4.31.1.1.13
+    name: ipSystemStatsHCInForwDatagrams
+  - OID: 1.3.6.1.2.1.4.31.1.1.14
+    name: ipSystemStatsReasmReqds
+  - OID: 1.3.6.1.2.1.4.31.1.1.15
+    name: ipSystemStatsReasmOKs
+  - OID: 1.3.6.1.2.1.4.31.1.1.16
+    name: ipSystemStatsReasmFails
+  - OID: 1.3.6.1.2.1.4.31.1.1.17
+    name: ipSystemStatsInDiscards
+  - OID: 1.3.6.1.2.1.4.31.1.1.19
+    name: ipSystemStatsHCInDelivers
+  - OID: 1.3.6.1.2.1.4.31.1.1.21
+    name: ipSystemStatsHCOutRequests
+  - OID: 1.3.6.1.2.1.4.31.1.1.22
+    name: ipSystemStatsOutNoRoutes
+  - OID: 1.3.6.1.2.1.4.31.1.1.24
+    name: ipSystemStatsHCOutForwDatagrams
+  - OID: 1.3.6.1.2.1.4.31.1.1.25
+    name: ipSystemStatsOutDiscards
+  - OID: 1.3.6.1.2.1.4.31.1.1.26
+    name: ipSystemStatsOutFragReqds
+  - OID: 1.3.6.1.2.1.4.31.1.1.27
+    name: ipSystemStatsOutFragOKs
+  - OID: 1.3.6.1.2.1.4.31.1.1.28
+    name: ipSystemStatsOutFragFails
+  - OID: 1.3.6.1.2.1.4.31.1.1.29
+    name: ipSystemStatsOutFragCreates
+  - OID: 1.3.6.1.2.1.4.31.1.1.31
+    name: ipSystemStatsHCOutTransmits
+  - OID: 1.3.6.1.2.1.4.31.1.1.33
+    name: ipSystemStatsHCOutOctets
+  - OID: 1.3.6.1.2.1.4.31.1.1.35
+    name: ipSystemStatsHCInMcastPkts
+  - OID: 1.3.6.1.2.1.4.31.1.1.37
+    name: ipSystemStatsHCInMcastOctets
+  - OID: 1.3.6.1.2.1.4.31.1.1.39
+    name: ipSystemStatsHCOutMcastPkts
+  - OID: 1.3.6.1.2.1.4.31.1.1.41
+    name: ipSystemStatsHCOutMcastOctets
+  - OID: 1.3.6.1.2.1.4.31.1.1.43
+    name: ipSystemStatsHCInBcastPkts
+  - OID: 1.3.6.1.2.1.4.31.1.1.45
+    name: ipSystemStatsHCOutBcastPkts
+  metric_tags:
+  - index: 1
+    tag: ipversion
+    mapping:
+      0: unknown
+      1: ipv4
+      2: ipv6
+      3: ipv4z
+      4: ipv6z
+      16: dns
+- MIB: IP-MIB
+  table:
+    OID: 1.3.6.1.2.1.4.31.3
+    name: ipIfStatsTable
+  forced_type: monotonic_count
+  symbols:
+  - OID: 1.3.6.1.2.1.4.31.3.1.6
+    name: ipIfStatsHCInOctets
+  - OID: 1.3.6.1.2.1.4.31.3.1.7
+    name: ipIfStatsInHdrErrors
+  - OID: 1.3.6.1.2.1.4.31.3.1.8
+    name: ipIfStatsInNoRoutes
+  - OID: 1.3.6.1.2.1.4.31.3.1.9
+    name: ipIfStatsInAddrErrors
+  - OID: 1.3.6.1.2.1.4.31.3.1.10
+    name: ipIfStatsInUnknownProtos
+  - OID: 1.3.6.1.2.1.4.31.3.1.11
+    name: ipIfStatsInTruncatedPkts
+  - OID: 1.3.6.1.2.1.4.31.3.1.13
+    name: ipIfStatsHCInForwDatagrams
+  - OID: 1.3.6.1.2.1.4.31.3.1.14
+    name: ipIfStatsReasmReqds
+  - OID: 1.3.6.1.2.1.4.31.3.1.15
+    name: ipIfStatsReasmOKs
+  - OID: 1.3.6.1.2.1.4.31.3.1.16
+    name: ipIfStatsReasmFails
+  - OID: 1.3.6.1.2.1.4.31.3.1.17
+    name: ipIfStatsInDiscards
+  - OID: 1.3.6.1.2.1.4.31.3.1.19
+    name: ipIfStatsHCInDelivers
+  - OID: 1.3.6.1.2.1.4.31.3.1.21
+    name: ipIfStatsHCOutRequests
+  - OID: 1.3.6.1.2.1.4.31.3.1.24
+    name: ipIfStatsHCOutForwDatagrams
+  - OID: 1.3.6.1.2.1.4.31.3.1.25
+    name: ipIfStatsOutDiscards
+  - OID: 1.3.6.1.2.1.4.31.3.1.26
+    name: ipIfStatsOutFragReqds
+  - OID: 1.3.6.1.2.1.4.31.3.1.27
+    name: ipIfStatsOutFragOKs
+  - OID: 1.3.6.1.2.1.4.31.3.1.28
+    name: ipIfStatsOutFragFails
+  - OID: 1.3.6.1.2.1.4.31.3.1.29
+    name: ipIfStatsOutFragCreates
+  - OID: 1.3.6.1.2.1.4.31.3.1.31
+    name: ipIfStatsHCOutTransmits
+  - OID: 1.3.6.1.2.1.4.31.3.1.33
+    name: ipIfStatsHCOutOctets
+  - OID: 1.3.6.1.2.1.4.31.3.1.35
+    name: ipIfStatsHCInMcastPkts
+  - OID: 1.3.6.1.2.1.4.31.3.1.37
+    name: ipIfStatsHCInMcastOctets
+  - OID: 1.3.6.1.2.1.4.31.3.1.39
+    name: ipIfStatsHCOutMcastPkts
+  - OID: 1.3.6.1.2.1.4.31.3.1.41
+    name: ipIfStatsHCOutMcastOctets
+  - OID: 1.3.6.1.2.1.4.31.3.1.43
+    name: ipIfStatsHCInBcastPkts
+  - OID: 1.3.6.1.2.1.4.31.3.1.45
+    name: ipIfStatsHCOutBcastPkts
+  metric_tags:
+  - index: 1
+    tag: ipversion
+    mapping:
+      0: unknown
+      1: ipv4
+      2: ipv6
+      3: ipv4z
+      4: ipv6z
+      16: dns
+  - index: 2
+    tag: interface
+
+
+- MIB: HOST-RESOURCES-MIB
+  table:
+    OID: 1.3.6.1.2.1.25.2.3
+    name: hrStorageTable
+  symbols:
+    - OID: 1.3.6.1.2.1.25.2.3.1.5
+        # core check only
+      name: memory.total
+    - OID: 1.3.6.1.2.1.25.2.3.1.6
+        # core check only
+      name: memory.used
+  metric_tags:
+    - tag: mem
+      index: 1
+
+- MIB: HOST-RESOURCES-MIB
+  table:
+    OID: 1.3.6.1.2.1.25.3.3
+    name: hrProcessorTable
+  symbols:
+    - OID: 1.3.6.1.2.1.25.3.3.1.2
+        # core check only
+      name: cpu.usage
+  metric_tags:
+    - tag: cpu
+      index: 1
+

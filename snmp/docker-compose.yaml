@@ -7,19 +7,32 @@ services:
     ports:
       - "161:161/udp"
     volumes:
-      - ./data-icore/:/usr/local/share/snmpsim/data
+      #- ./data-icore/:/usr/local/share/snmpsim/data
       - ./data/:/usr/local/share/snmpsim/data
-    #labels:
-     # com.datadoghq.ad.check_names: '["snmp"]'
-      #com.datadoghq.ad.init_configs: '[{}]'
-      #com.datadoghq.ad.instances: |
-       # [
-       # { "ip_address": "%%host%%", "port": "161", "community_string": "ipsec" }
-       # ]
+    networks:
+     - test-net
+
+  datadog:
+    container_name: datadog-agent
+    build: .
+    environment:
+      ## GLOBALS
+      - DD_API_KEY=${DD_API_KEY}
+      - DD_SITE=datadoghq.com
+      - DD_HOSTNAME=brian.snmp.sandbox
+      - DD_TAGS=env:sandbox owner:brian
+      - DD_AC_EXCLUDE=name:datadog-agent # exclude this container from data collection
+      - DD_DOGSTATSD_NON_LOCAL_TRAFFIC=true
+      - DD_DOCKER_LABELS_AS_TAGS=true
+      - DD_DOCKER_ENV_AS_TAGS=true
+    volumes:
+      - /var/run/docker.sock:/var/run/docker.sock:ro
+      - /proc/:/host/proc/:ro
+      - /sys/fs/cgroup:/host/sys/fs/cgroup:ro
+    ports:
+      - "8125:8125/udp"  
     networks:
       - test-net
-
-
 networks:
   test-net:
     external: true
