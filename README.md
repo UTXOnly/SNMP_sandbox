@@ -159,9 +159,8 @@ metrics:
           OID: 1.3.6.1.4.1.29671.1.1.4.1.9
           name: devProductCode
         tag: product
-  
-  ```
-        * An example of syntax used for scalar objects:
+```
+   * An example of syntax used for scalar objects:
         
    ```
      metrics:
