@@ -23,6 +23,11 @@ You can then add the necessary environment variables as depicted below:
 
 `DD_API_KEY= <YOUR_API_KEY_HERE>`
 
+##### File Placement
+
+![run sh — SNMP_sandbox 2022-10-30 at 12 30 50 PM](https://user-images.githubusercontent.com/49233513/198890249-6d105987-0359-4bd3-b4e4-e751781ed8aa.jpg)
+
+
 To run this script, simply run the follwing script from this repository's parent directory(`SNMP_sandbox`).
 ```
 ./run.sh
