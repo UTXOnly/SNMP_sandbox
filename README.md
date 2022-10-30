@@ -15,10 +15,9 @@ Simply clone the repo, add your custom SNMP profile to test along with `conf.yam
 
 * Custom profile to be tested must be named `_test_profile.yaml` and configuration file named `conf.yaml`
 * Both `_test_profile.yaml` and `conf.yaml` must be placed in the `/snmp` directory of this repo for this program to run properly
-* In order to collect metrics, there must be `OID`s matching what is broadcasted in the `.snmprec` file for the Datadog agent to successfully poll the mock SNMP device.
 * The Datadog agent will only collect metrics that are defined in a profile, if the `OID` isn't in the `.snmprec` file, it won't be collected by Datadog
 
-This script requires a `.env` file to be placed in the repository's parent directory (./). Your `.env` file should contain environmental variables needed for your docker containers, in this case your `DD_API_KEY`.
+This script requires a `.env` file to be placed in the `snmp/` directory for `docker-compose` to read it. Your `.env` file should contain environmental variables needed for your docker containers, in this case your `DD_API_KEY`. The rest of the env var can be added in the `docker-compose.yaml` file.
 
 If you don't already have a `.env` file, you can create one by running the command below in the `snmp` directory :
 ```
@@ -37,18 +36,21 @@ To run this script, simply run the follwing script from this repository's parent
 ```
 ./run.sh
 ```
-The run script simply builds fresh Docker images at runtime, leveraging the docker-compose command.
+The run script simply builds fresh Docker images at runtime, leveraging the docker-compose command to run these containers togehter.
 
-##### To stop the containers and destroy the Docker network and images created runt he below command:
+##### To stop the containers and destroy the Docker network and images created run the below command:
 ```
 ./destroy.sh
 ```
 
 # A Live Demonstration
-* Commands used prioro to running program:
+* Commands used to clone repo and move configuration files into the appropriate directories.
   * `git clone git@github.com:UTXOnly/SNMP_sandbox.git`
-  * `cp <Filepath_to_conf.yaml>/conf.yaml ./conf.yaml`
-  * `cp <Filepath_to_test_profile.yaml>/conf.yaml ./_test_profile.yaml`
+    *  This will clone the repo and create a new folder `SNMP_sandbox` , `run` and `destroy` commands are run from here
+  * `cp <Filepath_to_conf.yaml>/conf.yaml ./snmp/conf.yaml`
+    * When run from the `SNMP_sandbox` directory, copies configuration file to appropriate directory
+  * `cp <Filepath_to_test_profile.yaml>/conf.yaml ./snmp/_test_profile.yaml`
+    * When run from the `SNMP_sandbox` directory, copies custom profile to appropriate directory 
 
 [Gif of run.sh script](https://a.cl.ly/xQux8w5P)
 ![Gif of run scipt](https://user-images.githubusercontent.com/49233513/198861452-dc78d1c9-1b9b-49b0-9943-3e4a11a14d59.gif)
