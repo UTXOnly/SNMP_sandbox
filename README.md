@@ -31,7 +31,9 @@ The run script simply builds fresh Docker images each instance, leveraging the d
 
 # A Live Demonstration
 * Commands used:
-  *   hi
+  * `git clone git@github.com:UTXOnly/SNMP_sandbox.git`
+  * `cp <Filepath_to_conf.yaml>/conf.yaml ./conf.yaml`
+  * `cp <Filepath_to_test_profile.yaml>/conf.yaml ./_test_profile.yaml`
 
 
 ## Configuration Notes
