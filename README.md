@@ -34,11 +34,13 @@ The run script simply builds fresh Docker images each instance, leveraging the d
   * `git clone git@github.com:UTXOnly/SNMP_sandbox.git`
   * `cp <Filepath_to_conf.yaml>/conf.yaml ./conf.yaml`
   * `cp <Filepath_to_test_profile.yaml>/conf.yaml ./_test_profile.yaml`
-  * `echo "DD_API_KEY=<YOUR_API_KEY_HERE>" > ./snmp/.env
+  * `echo "DD_API_KEY=<YOUR_API_KEY_HERE>" > ./snmp/.env`
 
 [Gif of run scripts](https://a.cl.ly/xQux8w5P)
 ![Gif of run scipt](https://user-images.githubusercontent.com/49233513/198861452-dc78d1c9-1b9b-49b0-9943-3e4a11a14d59.gif)
 
+
+[In the Datadog NDM panel](https://a.cl.ly/GGuzwKje)
 ![In the Datadog NDM panel](https://user-images.githubusercontent.com/49233513/198861534-cd973b7e-c0a2-4d33-9fec-2fd5c30351d8.gif)
 
 
