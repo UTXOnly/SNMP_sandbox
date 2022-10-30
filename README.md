@@ -1,7 +1,7 @@
 # SNMP_sandbox                                                                                               
                                                                                                         
 
-A sandbox environment for testing custom SNMP profiles with Datadog Network Device Management. By adding your own Datadog API key to an `.env` file and then running a simple run command, you can validate your custom SNMP profile with the help of a mock SNMP device running in another Docker container.
+A sandbox environment for testing custom SNMP profiles with Datadog Network Device Management. By adding your own Datadog API key to an `.env` file, then running a simple run script, you can validate your custom SNMP profile with the help of a mock SNMP device running in another Docker container.
 
 ##### Use Case
 To validate custom SNMP profiles along with Datadog agent configuration
@@ -164,8 +164,8 @@ metrics:
         
    ```
      metrics:
-   - OID: 1.3.6.1.2.1.6.0
-     name: tcpActiveOpens # what to use in the metric name; can be anything
+      - OID: 1.3.6.1.2.1.6.0
+        name: tcpActiveOpens # what to use in the metric name; can be anything
   ```
   
   ##### How the Integration Works
