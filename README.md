@@ -59,6 +59,7 @@ Just run the program and the data will start showing up in the Datadog UI.
 
 
 ## To connect to the running Datadog container
+
 ```
 docker exec -it datadog-agent /bin/bash
 ```
