@@ -1,8 +1,8 @@
 # SNMP_sandbox
-A sandbox environment for testing custom SNMP profiles for use with Datadog Network Device Management. By adding your own Datadog API key to an `.env` file and then running a simple run command, you can validate your custom SNMP profile with the help of a mock SNMP device running in another Docker container.
+A sandbox environment for testing custom SNMP profiles with Datadog Network Device Management. By adding your own Datadog API key to an `.env` file and then running a simple run command, you can validate your custom SNMP profile with the help of a mock SNMP device running in another Docker container.
 
 ##### Use Case
-To validate a custom SNMP profile along with Datadog agent configuration.
+To validate custom SNMP profiles along with Datadog agent configuration.
 
 ## How to Use
 
@@ -11,9 +11,9 @@ Simply clone the repo, add your custom SNMP profile to test along with `conf.yam
 * Custom profile to be tested must be named `_test_profile.yaml` and configuration file named `conf.yaml`
 * Both `_test_profile.yaml` and `conf.yaml` must be placed in the `/snmp` directory of this repo for this program to run properly
 * In order to collect metrics, there must be `OID`s matching what is broadcasted in the `.snmprec` file for the Datadog agent to successfully poll the mock SNMP device.
-* The Datadog agent will only collect metrics that are defined in a profile, if the `OID` isn't in the .snmprec` file, it won't be collected by Datadog
+* The Datadog agent will only collect metrics that are defined in a profile, if the `OID` isn't in the `.snmprec` file, it won't be collected by Datadog
 
-This script requires a `.env` file to be placed in the repository's parent directory (./). Your `.env` file should contain environmental variables needs for your docker containers, in this case your `DD_API_KEY` and `DD_AGENT_HOST`
+This script requires a `.env` file to be placed in the repository's parent directory (./). Your `.env` file should contain environmental variables needed for your docker containers, in this case your `DD_API_KEY`.
 
 If you don't already have a `.env` file, you can create one by running the command below in this repository's parent directory (./):
 ```
