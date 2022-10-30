@@ -15,7 +15,7 @@ Simply clone the repo, add your custom SNMP profile to test along with `conf.yam
 
 This script requires a `.env` file to be placed in the repository's parent directory (./). Your `.env` file should contain environmental variables needed for your docker containers, in this case your `DD_API_KEY`.
 
-If you don't already have a `.env` file, you can create one by running the command below in this repository's parent directory (./):
+If you don't already have a `.env` file, you can create one by running the command below in the `snmp` directory :
 ```
 touch .env
 ```
@@ -27,7 +27,12 @@ To run this script, simply run the follwing script from this repository's parent
 ```
 ./run.sh
 ```
-The run script simply builds fresh Docker images each instance, leveraging the docker-compose command
+The run script simply builds fresh Docker images at runtime, leveraging the docker-compose command.
+
+##### To stop the containers and destroy the Docker network and images created runt he below command:
+```
+./destroy.sh
+```
 
 # A Live Demonstration
 * Commands used:
