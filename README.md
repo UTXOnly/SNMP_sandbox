@@ -37,7 +37,11 @@ The run script simply builds fresh Docker images each instance, leveraging the d
   * `echo "DD_API_KEY=<YOUR_API_KEY_HERE>" > ./snmp/.env
 
 [Gif of run scripts](https://a.cl.ly/xQux8w5P)
-![Screen Recording 2022-10-29 at 11 33 25 PM](https://user-images.githubusercontent.com/49233513/198861452-dc78d1c9-1b9b-49b0-9943-3e4a11a14d59.gif)
+![Gif of run scipt](https://user-images.githubusercontent.com/49233513/198861452-dc78d1c9-1b9b-49b0-9943-3e4a11a14d59.gif)
+
+![In the Datadog NDM panel](https://user-images.githubusercontent.com/49233513/198861534-cd973b7e-c0a2-4d33-9fec-2fd5c30351d8.gif)
+
+
 
 
 ## Configuration Notes
