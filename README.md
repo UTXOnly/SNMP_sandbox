@@ -35,7 +35,7 @@ init_config:
       
 instances:
 
-- ip_address: 192.168.1.153
+- ip_address: 192.168.1.123
   snmp_version: 2
   profile: custom-profile
   loader: core
@@ -45,6 +45,11 @@ instances:
   
 The program will automatically correct the value corresponding to the `ip_address:` key to `host.docker.internal`. The program aslo loads the `_test_profile.yaml` configuration file to the `/etc/datadog-agent/conf.d/snmp.d/profiles` directory.
 
-Just run the program and the data will start showing up in the DAtadog UI.
+##### Community String Usage
+* The key for `community_string` needs to match the name of the `.snmprec` file that is used to mimic the networking device, be sure to enclose in single quotes `'`
+
+
+
+Just run the program and the data will start showing up in the Datadog UI.
   
 
