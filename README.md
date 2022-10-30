@@ -37,6 +37,7 @@ The run script simply builds fresh Docker images each instance, leveraging the d
   * `echo "DD_API_KEY=<YOUR_API_KEY_HERE>" > ./snmp/.env
 
 [Gif of run scripts](https://a.cl.ly/xQux8w5P)
+<iframe src="https://a.cl.ly/xQux8w5P?branding=true&amp;embed=true&amp;title=true" width="575" height="400" style="border:none" frameborder="0" allowtransparency="true" allowfullscreen="true"></iframe>
 
 
 ## Configuration Notes
