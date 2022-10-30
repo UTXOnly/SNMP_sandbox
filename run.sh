@@ -1,16 +1,12 @@
 #!/bin/bash
+cd snmp
+#sed script to replace IP address used in conf.yaml to host.docker.internal
+sed -r -i '' 's/[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}/host.docker.internal/g' ./conf.yaml
 
-vagrant up
-wait
-sleep 20
-echo "sleep finished"
-
-cd ./snmp
-echo "changed directory"
+echo "Creating docker network############################"
 docker network create test-net
-docker-compose build --no-cache
-docker-compose up -d 
-echo "docker up"
-vagrant ssh
 
-#datadog-agent snmp walk 192.168.1.153 1.3.6.1 -v 2 -C ipsec
+echo "Building docker image##############################"
+docker-compose up --build --force-recreate
+
+echo "Docker up"
