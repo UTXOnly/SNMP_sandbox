@@ -1,10 +1,4 @@
-```
-███████ ███    ██ ███    ███ ██████          ███████  █████  ███    ██ ██████  ██████   ██████  ██   ██ 
-██      ████   ██ ████  ████ ██   ██         ██      ██   ██ ████   ██ ██   ██ ██   ██ ██    ██  ██ ██  
-███████ ██ ██  ██ ██ ████ ██ ██████          ███████ ███████ ██ ██  ██ ██   ██ ██████  ██    ██   ███   
-     ██ ██  ██ ██ ██  ██  ██ ██                   ██ ██   ██ ██  ██ ██ ██   ██ ██   ██ ██    ██  ██ ██  
-███████ ██   ████ ██      ██ ██      ███████ ███████ ██   ██ ██   ████ ██████  ██████   ██████  ██   ██ 
-```                                                                                                   
+# SNMP_sandbox                                                                                               
                                                                                                         
 
 A sandbox environment for testing custom SNMP profiles with Datadog Network Device Management. By adding your own Datadog API key to an `.env` file and then running a simple run command, you can validate your custom SNMP profile with the help of a mock SNMP device running in another Docker container.
