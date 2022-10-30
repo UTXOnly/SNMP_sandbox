@@ -24,6 +24,11 @@ The run script simply builds fresh Docker images each instance, leveraging the d
 
 ## Configuration Notes
 
+`conf.yaml` should match what is shown in [example config file](https://github.com/DataDog/integrations-core/blob/master/snmp/datadog_checks/snmp/data/conf.yaml.example)
+
+* The program will automatically correct the value corresponding to the `ip_address:` key to `host.docker.internal`. The program aslo loads the `_test_profile.yaml` configuration file to the `/etc/datadog-agent/conf.d/snmp.d/profiles` directory.
+* Filename for custom profile to test must be `_test_profile.yaml` for the program to work properly
+
 
 ```
 init_config:
@@ -43,13 +48,19 @@ instances:
   use_device_id_as_hostname: true
   ```
   
-The program will automatically correct the value corresponding to the `ip_address:` key to `host.docker.internal`. The program aslo loads the `_test_profile.yaml` configuration file to the `/etc/datadog-agent/conf.d/snmp.d/profiles` directory.
 
-##### Community String Usage
+
+##### Community String Usage for SNMP v2
 * The key for `community_string` needs to match the name of the `.snmprec` file that is used to mimic the networking device, be sure to enclose in single quotes `'`
 
 
 
 Just run the program and the data will start showing up in the Datadog UI.
+
+
+## To connect to the running Datadog container
+```
+docker exec -it datadog-agent /bin/bash
+```
   
 
