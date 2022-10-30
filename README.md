@@ -69,7 +69,7 @@ The run script simply builds fresh Docker images at runtime, leveraging the dock
 * The program will automatically correct the value corresponding to the `ip_address:` key to `host.docker.internal`. The program aslo loads the `_test_profile.yaml` configuration file to the `/etc/datadog-agent/conf.d/snmp.d/profiles` directory.
 * Filename for custom profile to test must be `_test_profile.yaml` for the program to work properly
 
-
+* Below is the example `conf.yaml` file included in this repo, this will work right out of the box.
 ```
 init_config:
   loader: core
@@ -104,7 +104,38 @@ Just run the program and the data will start showing up in the Datadog UI.
 docker exec -it datadog-agent /bin/bash
 ```
 
+## Resources
+The Datadog documentation is a great place to start for more information on configuring your `conf.yaml` and custom profile. I would recomend exploring the following documentation as a starting point:
+* [What is SNMP?](https://www.datadoghq.com/knowledge-center/network-monitoring/snmp-monitoring/?_gl=1*nisasa*_ga*MTkzODU0NDQ4Ni4xNjUyNzUwNzc2*_ga_KN80RDFSQK*MTY2NzE1ODM4OC42ODMuMS4xNjY3MTU4NDAwLjQ4LjAuMA..)
+* [SNMP Metrics](https://docs.datadoghq.com/network_monitoring/devices/snmp_metrics?tab=snmpv2)
+* [NDM Profiles](https://docs.datadoghq.com/network_monitoring/devices/profiles)
+* [Build a NDM Profile](https://docs.datadoghq.com/network_monitoring/devices/guide/build-ndm-profile/)
+
+Please use example [snmp.d/conf.yaml](https://github.com/DataDog/integrations-core/blob/master/snmp/datadog_checks/snmp/data/conf.yaml.example) file for refernce. Proper YAML format is required for the `snmp` check to load in the Datadog agent. You can use a [YAML parser](https://yaml-online-parser.appspot.com/) to validate the yaml format of your configuration files.
+
+Please use [SNMP profiles](https://github.com/DataDog/integrations-core/tree/master/snmp/datadog_checks/snmp/data/profiles) as starting point for creating a custom profile. When creating a custom profile, I reccomend extending some of the exsisting generic profiles to configure device metadata and non-vendor specific `OID`s.
+
+Below is an example of how to extend base profiles at the begining of your custom profile:
+```
+extends:
+  - _base.yaml
+  - _generic-if.yaml
+  - _generic-ip.yaml
+  - _generic-tcp.yaml
+  - _generic-udp.yaml
+  - _generic-bgp4.yaml
+  - _generic-ospf.yaml
+  ```
+  ##### Syntax Notes
+  The SNMP integration can collect both scalar and tabular SNMP objects and have differnt syntax within your custom profile for each type.
+  
+  ##### How the Integration Works
+  ![SNMP containers](https://user-images.githubusercontent.com/49233513/198899525-3de73341-6863-4640-8fdc-64fc7b06e8ea.png)
+
+
 ## To Do
 * Add functionality for SNMP `v3` 
+* Create conversion program to translate `snmpwalk` output to `.snmprec` format
+  * Thinking of a mix of `BASH` and `Python` scripts possibly???
   
 
