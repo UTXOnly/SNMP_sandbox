@@ -11,7 +11,7 @@ Simply clone the repo, add your custom SNMP profile to test along with `conf.yam
 * Custom profile to be tested must be named `_test_profile.yaml` and configuration file named `conf.yaml`
 * Both `_test_profile.yaml` and `conf.yaml` must be placed in the `/snmp` directory of this repo for this program to run properly
 * In order to collect metrics, there must be `OID`s matching what is broadcasted in the `.snmprec` file for the Datadog agent to successfully poll the mock SNMP device.
-
+* The Datadog agent will only collect metrics that are defined in a profile, if the `OID` isn't in the .snmprec` file, it won't be collected by Datadog
 
 This script requires a `.env` file to be placed in the repository's parent directory (./). Your `.env` file should contain environmental variables needs for your docker containers, in this case your `DD_API_KEY` and `DD_AGENT_HOST`
 
@@ -25,9 +25,13 @@ You can then add the necessary environment variables as depicted below:
 
 To run this script, simply run the follwing script from this repository's parent directory(`SNMP_sandbox`).
 ```
-./run.sh`
+./run.sh
 ```
 The run script simply builds fresh Docker images each instance, leveraging the docker-compose command
+
+# A Live Demonstration
+* Commands used:
+*   hi
 
 
 ## Configuration Notes
