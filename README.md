@@ -31,7 +31,7 @@ The run script simply builds fresh Docker images each instance, leveraging the d
 
 # A Live Demonstration
 * Commands used:
-*   hi
+  *   hi
 
 
 ## Configuration Notes
