@@ -25,7 +25,8 @@ The run script simply builds fresh Docker images each instance, leveraging the d
 ## Configuration Notes
 
 
-```init_config:
+```
+init_config:
   loader: core
   use_device_id_as_hostname: true
   profiles:
