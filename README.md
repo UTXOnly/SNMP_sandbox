@@ -6,7 +6,11 @@ To validate a custom SNMP profile along with Datadog agent configuration.
 
 ## How to Use
 
-Simply clone the repo, add your custom SNMP profile to test along with wht `conf.yaml` file to test it against.
+Simply clone the repo, add your custom SNMP profile to test along with `conf.yaml` file to test it against.
+
+* Custom profile to be tested must be named `_test_profile.yaml` and configuration file named `conf.yaml`
+* Both `_test_profile.yaml` and `conf.yaml` must be placed in the `/snmp` directory of this repo for this program to run properly
+* In order to collect metrics, there must be `OID`s matching what is broadcasted in the `.snmprec` file for the Datadog agent to successfully poll the mock SNMP device.
 
 
 This script requires a `.env` file to be placed in the repository's parent directory (./). Your `.env` file should contain environmental variables needs for your docker containers, in this case your `DD_API_KEY` and `DD_AGENT_HOST`
