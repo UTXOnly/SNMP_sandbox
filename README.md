@@ -9,7 +9,7 @@ To validate custom SNMP profiles along with Datadog agent configuration
 * Simulate a SNNP device being polled and reporting metrics to Datadog agent
 * Validate tags used and test custom dashboards
 
-## How to Use
+## Instructions
 
 Simply clone the repo, add your custom SNMP profile to test along with `conf.yaml` file to test it against.
 
