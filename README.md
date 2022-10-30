@@ -129,6 +129,46 @@ extends:
   ##### Syntax Notes
   The SNMP integration can collect both scalar and tabular SNMP objects and have differnt syntax within your custom profile for each type.
   
+  * An example of syntax used for tabular objects:
+
+```
+metrics:
+  - MIB: MERAKI-CLOUD-CONTROLLER-MIB
+    table:
+      OID: 1.3.6.1.4.1.29671.1.1.4
+      name: devTable
+      # devTable INDEX is: devMac
+    forced_type: gauge
+    symbols:
+      - OID: 1.3.6.1.4.1.29671.1.1.4.1.3
+        name: devStatus
+      - OID: 1.3.6.1.4.1.29671.1.1.4.1.5
+        name: devClientCount
+    metric_tags:
+      # devMac is part of the devTable index
+      - column:
+          OID: 1.3.6.1.4.1.29671.1.1.4.1.1
+          name: devMac
+          format: mac_address
+        tag: mac_address
+      - column:
+          OID: 1.3.6.1.4.1.29671.1.1.4.1.2
+          name: devName
+        tag: device
+      - column:
+          OID: 1.3.6.1.4.1.29671.1.1.4.1.9
+          name: devProductCode
+        tag: product
+  
+  ```
+        * An example of syntax used for scalar objects:
+        
+   ```
+     metrics:
+   - OID: 1.3.6.1.2.1.6.0
+     name: tcpActiveOpens # what to use in the metric name; can be anything
+  ```
+  
   ##### How the Integration Works
   ![SNMP containers](https://user-images.githubusercontent.com/49233513/198899525-3de73341-6863-4640-8fdc-64fc7b06e8ea.png)
 
