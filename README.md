@@ -32,11 +32,11 @@ You can then add the necessary environment variables as depicted below:
 ![run sh — SNMP_sandbox 2022-10-30 at 12 30 50 PM](https://user-images.githubusercontent.com/49233513/198890249-6d105987-0359-4bd3-b4e4-e751781ed8aa.jpg)
 
 
-To run this script, simply run the follwing script from this repository's parent directory(`SNMP_sandbox`).
+To run this script, simply run the follwing script from this repository's main directory(`SNMP_sandbox`).
 ```
 ./run.sh
 ```
-The run script simply builds fresh Docker images at runtime, leveraging the docker-compose command to run these containers togehter.
+The run script builds fresh Docker images at runtime, leveraging the docker-compose command to run these containers togehter.
 
 ##### To stop the containers and destroy the Docker network and images created run the below command:
 ```
