@@ -43,7 +43,7 @@ The run script builds fresh Docker images at runtime, leveraging the docker-comp
 ./destroy.sh
 ```
 
-# A Live Demonstration
+# Demonstration
 * Commands used to clone repo and move configuration files into the appropriate directories.
   * `git clone git@github.com:UTXOnly/SNMP_sandbox.git`
     *  This will clone the repo and create a new folder `SNMP_sandbox` , `run` and `destroy` commands are run from here
