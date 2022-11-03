@@ -113,7 +113,7 @@ The Datadog documentation is a great place to start for more information on conf
 
 Please use example [snmp.d/conf.yaml](https://github.com/DataDog/integrations-core/blob/master/snmp/datadog_checks/snmp/data/conf.yaml.example) file for refernce. Proper YAML format is required for the `snmp` check to load in the Datadog agent. You can use a [YAML parser](https://yaml-online-parser.appspot.com/) to validate the yaml format of your configuration files.
 
-Please use [SNMP profiles](https://github.com/DataDog/integrations-core/tree/master/snmp/datadog_checks/snmp/data/profiles) as starting point for creating a custom profile. When creating a custom profile, I reccomend extending some of the exsisting generic profiles to configure device metadata and non-vendor specific `OID`s.
+Please use [SNMP profiles](https://github.com/DataDog/integrations-core/tree/master/snmp/datadog_checks/snmp/data/profiles) as starting point for creating a custom profile. When creating a custom profile, I recommend extending some of the existing generic profiles to configure device metadata and non-vendor specific `OID`s.
 
 Below is an example of how to extend base profiles at the begining of your custom profile:
 ```
