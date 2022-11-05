@@ -66,7 +66,7 @@ The run script builds fresh Docker images at runtime, leveraging the docker-comp
 
 `conf.yaml` should match what is shown in [example config file](https://github.com/DataDog/integrations-core/blob/master/snmp/datadog_checks/snmp/data/conf.yaml.example)
 
-* The program will automatically correct the value corresponding to the `ip_address:` key to `host.docker.internal`. The program aslo loads the `_test_profile.yaml` configuration file to the `/etc/datadog-agent/conf.d/snmp.d/profiles` directory.
+* The program will automatically correct the `value` corresponding to the `ip_address:` key to `host.docker.internal`. The program also loads the `_test_profile.yaml` configuration file to the `/etc/datadog-agent/conf.d/snmp.d/profiles` directory.
 * Filename for custom profile to test must be `_test_profile.yaml` for the program to work properly
 
 * Below is the example `conf.yaml` file included in this repo, this will work right out of the box.
