@@ -12,7 +12,7 @@ instances:
   snmp_version: 2
   profile: custom-profile
   loader: core
-  community_string: 'mockSNMP'
+  community_string: 'test2'
   use_device_id_as_hostname: true
   
   

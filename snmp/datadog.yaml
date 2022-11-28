@@ -1,0 +1,530 @@
+
+
+listeners:
+  - name: snmp
+
+snmp_listener:
+  workers: 100  # number of workers used to discover devices concurrently
+  discovery_interval: 3600  # interval between each autodiscovery in seconds
+  loader: core  # use core check implementation of SNMP integration. recommended
+  use_device_id_as_hostname: true  # recommended
+configs:
+  - network_address: host.docker.internal/24 # CIDR subnet - 700 VPN ROUTER
+    snmp_version: 2
+    port: 161 # Default port is 161, as long as device is listening on port 161, you can omit this key:value pair
+    community_string: 'mockSNMP'
+    tags:
+    - "key8:700MS_Public"
+  - network_address: host.docker.internal/29 # CIDR subnet
+    snmp_version: 2
+    community_string: 'mockSNMP'
+    port: 161 # Default port is 161, as long as device is listening on port 161, you can omit this key:value pair
+    tags:
+    - "key1:val1"
+  - network_address: host.docker.internal/29 # CIDR subnet
+    snmp_version: 2
+    community_string: 'mockSNMP'
+    port: 161 # Default port is 161, as long as device is listening on port 161, you can omit this key:value pair
+    tags:
+    - "key2:val2"
+  - network_address: host.docker.internal/29  # CIDR subnet
+    snmp_version: 2
+    port: 161 # Default port is 161, as long as device is listening on port 161, you can omit this key:value pair
+    community_string: 'mockSNMP'
+    tags:
+    - "key3:val3"
+  - network_address: host.docker.internal  # CIDR subnet - HP iLO 2
+    snmp_version: 2
+    port: 161 # Default port is 161, as long as device is listening on port 161, you can omit this key:value pair
+    community_string: 'mockSNMP'
+    tags:
+    - "key4:ilo1"
+  - network_address: host.docker.internal  # CIDR subnet - HP iLO 3
+    snmp_version: 2
+    port: 161 # Default port is 161, as long as device is listening on port 161, you can omit this key:value pair
+    community_string: 'mockSNMP'
+    tags:
+    - "key4:ilo2"
+  - network_address: host.docker.internal # CIDR subnet - 238 ZoneDirector WiFi
+    snmp_version: 2
+    port: 161 # Default port is 161, as long as device is listening on port 161, you can omit this key:value pair
+    community_string: 'mockSNMP'
+    tags:
+    - "key3:238Wireless"
+  - network_address: host.docker.internal # CIDR subnet - 238MS VPN Router
+    snmp_version: 2
+    port: 161 # Default port is 161, as long as device is listening on port 161, you can omit this key:value pair
+    community_string: 'mockSNMP'
+    tags:
+    - "key4:238_Emp_VPN_Router"
+  - network_address: host.docker.internal # CIDR subnet - 700 Guest Router
+    snmp_version: 2
+    port: 161 # Default port is 161, as long as device is listening on port 161, you can omit this key:value pair
+    community_string: 'mockSNMP'
+    tags:
+    - "key6:700MS_USER_Net_Router"
+  - network_address: host.docker.internal # CIDR subnet - 700 Voip Router
+    snmp_version: 2
+    port: 161 # Default port is 161, as long as device is listening on port 161, you can omit this key:value pair
+    community_string: 'mockSNMP'
+    tags:
+    - "key7:700MS_VOIP_Router"    
+  - network_address: host.docker.internal # CIDR subnet -610 User Net Router
+    snmp_version: 2
+    port: 161 # Default port is 161, as long as device is listening on port 161, you can omit this key:value pair
+    community_string: 'mockSNMP'
+    tags:
+    - "key9:610MS_VPN_Net_Router"
+  - network_address: host.docker.internal/29 # CIDR subnet
+    snmp_version: 2
+    community_string: 'mockSNMP'
+    port: 161 # Default port is 161, as long as device is listening on port 161, you can omit this key:value pair
+    tags:
+    - "key11:700MS"
+  - network_address: host.docker.internal/29 # CIDR subnet
+    snmp_version: 2
+    community_string: 'mockSNMP'
+    port: 161 # Default port is 161, as long as device is listening on port 161, you can omit this key:value pair
+    tags:
+    - "key11:700MS"
+  - network_address: host.docker.internal/29 # CIDR subnet
+    snmp_version: 2
+    community_string: 'mockSNMP'
+    port: 161 # Default port is 161, as long as device is listening on port 161, you can omit this key:value pair
+    tags:
+    - "key11:700MS"
+  - network_address: host.docker.internal/29 # CIDR subnet
+    snmp_version: 2
+    community_string: 'mockSNMP'
+    port: 161 # Default port is 161, as long as device is listening on port 161, you can omit this key:value pair
+    tags:
+    - "key12:610MS"
+  - network_address: host.docker.internal/29 # CIDR subnet
+    snmp_version: 2
+    community_string: 'mockSNMP'
+    port: 161 # Default port is 161, as long as device is listening on port 161, you can omit this key:value pair
+    tags:
+    - "key12:610MS"
+  - network_address: host.docker.internal # CIDR subnet
+    snmp_version: 2
+    community_string: 'mockSNMP'
+    port: 161 # Default port is 161, as long as device is listening on port 161, you can omit this key:value pair
+    tags:
+    - "key13:238MS_VOIP_Router"
+  - network_address: host.docker.internal # CIDR subnet
+    snmp_version: 2
+    community_string: 'mockSNMP'
+    port: 161 # Default port is 161, as long as device is listening on port 161, you can omit this key:value pair
+    tags:
+    - "key14:238MS_UserNet_Router"
+  - network_address: host.docker.internal # CIDR subnet
+    snmp_version: 2
+    community_string: 'mockSNMP'
+    port: 161 # Default port is 161, as long as device is listening on port 161, you can omit this key:value pair
+    tags:
+    - "key15:238MS_ZoneDirector"
+  - network_address: host.docker.internal # CIDR subnet
+    snmp_version: 2
+    community_string: 'mockSNMP'
+    port: 161 # Default port is 161, as long as device is listening on port 161, you can omit this key:value pair
+    tags:
+    - "key16:238MS_EMployee_Router"
+  - network_address: host.docker.internal # CIDR subnet
+    snmp_version: 2
+    community_string: 'mockSNMP'
+    port: 161 # Default port is 161, as long as device is listening on port 161, you can omit this key:value pair
+    tags:
+    - "key17:610MS_User_Router"
+  - network_address: host.docker.internal # CIDR subnet
+    snmp_version: 2
+    community_string: 'mockSNMP'
+    port: 161 # Default port is 161, as long as device is listening on port 161, you can omit this key:value pair
+    tags:
+    - "key18:610MS_VOIP_Router"
+  - network_address: host.docker.internal # CIDR subnet
+    snmp_version: 2
+    community_string: 'mockSNMP'
+    port: 161 # Default port is 161, as long as device is listening on port 161, you can omit this key:value pair
+    tags:
+    - "key19:610MS_WIFI_Router"
+  - network_address: host.docker.internal/24 # CIDR subnet
+    snmp_version: 2
+    community_string: 'mockSNMP'
+    port: 161 # Default port is 161, as long as device is listening on port 161, you can omit this key:value pair
+    tags:
+    - "key19:610MS_WIFI_Router"
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+process_config:
+
+  process_collection:
+     enabled: true
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

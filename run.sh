@@ -12,13 +12,14 @@ docker-compose up --build --force-recreate -d # Add the -d flag to run container
 
 
 echo "Docker up"
-
+#mkdir ./"status&tcpdumps"
 echo "################## TCPDUMP started, please wait 30 seconds #######################################"
 #Starting a tcpdump filtering traffic on port 161 to closer inspect 
-docker exec datadog-agent tcpdump -G 30 port '(161 or 8125)' -W 1 -w /tcpdumps/dump$(date +'%m-%d-%Y').pcap
+docker exec datadog-agent tcpdump -G 30 port '(161 or 8125)' -W 1 -w ./"status&tcpdump"/dump$(date +'%m-%d-%Y').pcap
 
 echo "################### Running SNMP check ####################################"
 
 #docker exec datadog-agent touch /tcpdumps/debug_snmp_check.txt && \
-docker exec datadog-agent agent check snmp -l debug > ./"status&tcpdump"/debug_snmp_check.log
+#touch ./"status&tcpdump"/debug_snmp_check.log
+docker exec "datadog-agent agent check snmp -l debug" > ./"status&tcpdump"/debug_snmp_check.log
 
