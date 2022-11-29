@@ -38,7 +38,7 @@ echo -e "${BGreen}\nDo you want to open the .pcap file in Wireshark now? (y|n)${
 read ANSWER
 if [[ $ANSWER == "yes" || $ANSWER == "y" ]]; then
     if [ "$(uname)" == "Darwin" ]; then
-        if [ -f /Applications/Wireshark.app ]; then
+        if [ -d /Applications/Wireshark.app ]; then
             open -n -a /Applications/Wireshark.app ./tcpdump/*.pcap
         else 
             brew install wireshark
