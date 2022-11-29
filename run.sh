@@ -3,13 +3,18 @@
 BRed='\033[1;31m'
 BGreen='\033[1;32m'
 NC='\033[0m' # No Color
-cd snmp
+
 
 if [ "$(uname)" == "Darwin" ]; then
     #sed script to replace IP address used in conf.yaml to host.docker.internal
     sed -r -i '' 's/[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}/host.docker.internal/g' ./snmp/dd_config_files/conf.yaml ./snmp/dd_config_files/datadog.yaml
 elif [ "$(expr substr $(uname -s) 1 5)" == "Linux" ]; then
     sed 's/[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}/host.docker.internal/g' -i ./snmp/dd_config_files/conf.yaml ./snmp/dd_config_files/datadog.yaml
+else
+    echo "${BRed}Unable to detect OS${NC}"
+fi
+
+cd snmp
 echo -e "${BGreen}##################### Creating docker network############################${NC}"
 docker network create test-net
 
