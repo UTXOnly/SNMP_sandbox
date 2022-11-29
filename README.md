@@ -29,7 +29,8 @@ You can then add the necessary environment variables as depicted below:
 
 ##### File Placement
 
-![run sh — SNMP_sandbox 2022-10-30 at 12 30 50 PM](https://user-images.githubusercontent.com/49233513/198890249-6d105987-0359-4bd3-b4e4-e751781ed8aa.jpg)
+![run sh — SNMP_sandbox 2022-11-28 at 10 56 22 PM](https://user-images.githubusercontent.com/49233513/204435564-8422ad77-758e-4805-acfc-01f65de1b28c.jpg)
+
 
 
 To run this script, simply run the follwing script from this repository's main directory(`SNMP_sandbox`).
