@@ -29,7 +29,8 @@ You can then add the necessary environment variables as depicted below:
 
 ##### File Placement
 
-![run sh — SNMP_sandbox 2022-10-30 at 12 30 50 PM](https://user-images.githubusercontent.com/49233513/198890249-6d105987-0359-4bd3-b4e4-e751781ed8aa.jpg)
+![run sh — SNMP_sandbox 2022-11-28 at 10 56 22 PM](https://user-images.githubusercontent.com/49233513/204435564-8422ad77-758e-4805-acfc-01f65de1b28c.jpg)
+
 
 
 To run this script, simply run the follwing script from this repository's main directory(`SNMP_sandbox`).
@@ -52,8 +53,12 @@ The run script builds fresh Docker images at runtime, leveraging the docker-comp
   * `cp <Filepath_to_test_profile.yaml>/conf.yaml ./snmp/_test_profile.yaml`
     * When run from the `SNMP_sandbox` directory, copies custom profile to appropriate directory 
 
-[Gif of run.sh script](https://a.cl.ly/xQux8w5P)
-![Gif of run scipt](https://user-images.githubusercontent.com/49233513/198861452-dc78d1c9-1b9b-49b0-9943-3e4a11a14d59.gif)
+[Gif of run.sh script](https://a.cl.ly/9Zuz252m)
+
+https://user-images.githubusercontent.com/49233513/204433212-dfd4f4cd-c5be-4312-80d2-5f6fdc99ad71.mp4
+
+
+
 
 
 [In the Datadog NDM panel](https://a.cl.ly/GGuzwKje)
