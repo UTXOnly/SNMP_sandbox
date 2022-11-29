@@ -54,7 +54,11 @@ The run script builds fresh Docker images at runtime, leveraging the docker-comp
     * When run from the `SNMP_sandbox` directory, copies custom profile to appropriate directory 
 
 
-![SNMPSandbox](https://user-images.githubusercontent.com/49233513/204446657-f529e7ee-c7c5-4e39-ba6a-6f76ab150710.gif)
+
+https://user-images.githubusercontent.com/49233513/204450361-8a54cb46-3629-4bda-9cac-6217c3fba7da.mp4
+
+
+
 
 
 
