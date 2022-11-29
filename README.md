@@ -52,8 +52,10 @@ The run script builds fresh Docker images at runtime, leveraging the docker-comp
   * `cp <Filepath_to_test_profile.yaml>/conf.yaml ./snmp/_test_profile.yaml`
     * When run from the `SNMP_sandbox` directory, copies custom profile to appropriate directory 
 
-[Gif of run.sh script](https://a.cl.ly/xQux8w5P)
-![Gif of run scipt](https://user-images.githubusercontent.com/49233513/198861452-dc78d1c9-1b9b-49b0-9943-3e4a11a14d59.gif)
+[Gif of run.sh script](https://a.cl.ly/9Zuz252m)
+https://user-images.githubusercontent.com/49233513/204432444-2041cbe1-fb7e-43c7-b248-763b5a02fbea.mp4
+
+
 
 
 [In the Datadog NDM panel](https://a.cl.ly/GGuzwKje)
