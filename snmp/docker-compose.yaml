@@ -29,7 +29,7 @@ services:
       - /var/run/docker.sock:/var/run/docker.sock:ro
       - /proc/:/host/proc/:ro
       - /sys/fs/cgroup:/host/sys/fs/cgroup:ro
-      - ./status&tcpdump/:/tcpdumps/
+      - ./tcpdump/:/tcpdumps/
     ports:
       - "8125:8125/udp"  
     networks:
