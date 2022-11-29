@@ -18,7 +18,7 @@ echo -e "${BRed}Docker up${NC}"
 
 echo -e "${BGreen}################## TCPDUMP started, please wait 30 seconds #######################################\n${BRed}"
 #Starting a tcpdump filtering traffic on port 161 to closer inspect 
-docker exec datadog-agent tcpdump -G 7 port '(161 or 8125)' -W 1 -w /tcpdumps/dump_$(date +'%m-%d-%Y').pcap
+docker exec datadog-agent tcpdump -G 7 port 161 -W 1 -w /tcpdumps/dump_$(date +'%m-%d-%Y').pcap
 echo -e "${NC}\nWriting output of check to ./tcpdump/dump_<DATE>.pcap"
 
 echo -e "${BGreen}\n################### Running SNMP check ####################################${NC}"
