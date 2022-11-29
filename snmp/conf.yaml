@@ -8,7 +8,7 @@ init_config:
       
 instances:
 
-- ip_address: 192.199.231.1
+- ip_address: host.docker.internal
   snmp_version: 2
   profile: custom-profile
   loader: core
