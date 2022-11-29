@@ -8,11 +8,11 @@ init_config:
       
 instances:
 
-- ip_address: host.docker.internal
+- ip_address: 192.199.231.1
   snmp_version: 2
   profile: custom-profile
   loader: core
-  community_string: 'test2'
+  community_string: 'mockSNMP'
   use_device_id_as_hostname: true
   
   
