@@ -6,14 +6,13 @@ NC='\033[0m' # No Color
 cd snmp
 
 #sed script to replace IP address used in conf.yaml to host.docker.internal
-sed -r -i '' 's/[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}/host.docker.internal/g' ./conf.yaml ./datadog.yaml
+sed -r -i '' 's/[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}/host.docker.internal/g' ./snmp/dd_config_files/conf.yaml ./snmp/dd_config_files/datadog.yaml
 
 echo -e "${BGreen}##################### Creating docker network############################${NC}"
 docker network create test-net
 
 echo -e "${BGreen}################# Building docker image##############################${NC}"
 docker-compose up --build --force-recreate -d # Add the -d flag to run container in detached mode
-
 
 echo -e "${BRed}Docker up${NC}"
 
