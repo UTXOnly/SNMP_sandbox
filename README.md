@@ -48,14 +48,21 @@ The run script builds fresh Docker images at runtime, leveraging the docker-comp
 * Commands used to clone repo and move configuration files into the appropriate directories.
   * `git clone git@github.com:UTXOnly/SNMP_sandbox.git`
     *  This will clone the repo and create a new folder `SNMP_sandbox` , `run` and `destroy` commands are run from here
-  * `cp <Filepath_to_conf.yaml>/conf.yaml ./snmp/conf.yaml`
+  * `cp <Filepath_to_conf.yaml>/conf.yaml ./snmp/dd_configs.conf.yaml`
     * When run from the `SNMP_sandbox` directory, copies configuration file to appropriate directory
-  * `cp <Filepath_to_test_profile.yaml>/conf.yaml ./snmp/_test_profile.yaml`
+  * `cp <Filepath_to_test_profile.yaml>/conf.yaml ./snmp/dd_configs/_test_profile.yaml`
     * When run from the `SNMP_sandbox` directory, copies custom profile to appropriate directory 
+# TCPDUMP and Manual SNMP check
+* TCPDUMP and manual SNMP check will be placed in the `./snmp/tcpdump` directory
+  * You will be prompted at the end of the run script if you would like to open the `.pcap` file in Wireshark, if you do not have it installed, the script will install it for you and open up the new `.pcap` file for your review.
 
 
 
-https://user-images.githubusercontent.com/49233513/204450361-8a54cb46-3629-4bda-9cac-6217c3fba7da.mp4
+
+
+
+
+https://user-images.githubusercontent.com/49233513/204659435-33a6e04f-2f6b-4b52-895b-9bd242b2b44b.mp4
 
 
 
