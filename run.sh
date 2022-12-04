@@ -1,9 +1,9 @@
 #!/bin/bash
-
+source ./snmp/.env
 BRed='\033[1;31m'
 BGreen='\033[1;32m'
 NC='\033[0m' # No Color
-con_name=snmp_dev_1
+
 
 function parse_yaml {
    local prefix=$2
@@ -28,14 +28,14 @@ if [ "$(uname)" == "Darwin" ]; then
     #sed script to replace IP address used in conf.yaml to host.docker.internal
     sed -r -i '' 's/[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}/host.docker.internal/g' ./snmp/dd_config_files/conf.yaml ./snmp/dd_config_files/datadog.yaml
 elif [ "$(expr substr $(uname -s) 1 5)" == "Linux" ]; then
-    sudo sed -i 's/[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}/${con_name}/g' ./snmp/dd_config_files/conf.yaml #./snmp/dd_config_files/datadog.yaml
+    sudo sed -Ei "s|[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}|"$CONTAINER_NAME"|g" ./snmp/dd_config_files/conf.yaml #./snmp/dd_config_files/datadog.yaml
 else
     echo "${BRed}Unable to detect OS${NC}"
 fi
 
 cd snmp
 echo -e "${BGreen}##################### Creating docker network############################${NC}"
-docker network create test-net
+#docker network create test-net
 
 echo -e "${BGreen}################# Building docker image##############################${NC}"
 docker-compose up --build --force-recreate -d # Add the -d flag to run container in detached mode
@@ -44,7 +44,7 @@ echo -e "${BRed}\nDocker up${NC}"
 
 echo -e "${BGreen}\n################## TCPDUMP started, please wait 30 seconds #######################################\n${BRed}"
 #Starting a tcpdump filtering traffic on port 161 to closer inspect 
-docker exec datadog-agent tcpdump -c 150 -w /tcpdumps/dump$(date +'%m-%d-%Y').pcap
+docker exec datadog-agent tcpdump -T snmp -c 75 -w /tcpdumps/dump$(date +'%m-%d-%Y').pcap
 echo -e "${NC}\nWriting output of check to ./tcpdump/dump_$(date +'%m-%d-%Y').pcap"
 
 echo -e "${BGreen}\n################### Running SNMP check ####################################${NC}"

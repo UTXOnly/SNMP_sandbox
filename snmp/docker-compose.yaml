@@ -2,7 +2,7 @@ version: '3.5'
 
 services:
   snmp:
-    container_name: dd-snmp
+    container_name: ${CONTAINER_NAME}
     image: "tandrup/snmpsim:latest"
     ports:
       - "161:161/udp"

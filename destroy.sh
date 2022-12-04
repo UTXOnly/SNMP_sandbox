@@ -1,8 +1,8 @@
 #!/bin/bash
-
+source ./snmp/.env
 
 docker kill datadog-agent
-docker kill dd-snmp
+docker kill $CONTAINER_NAME
 docker network rm test-net
 docker image rm datadog/agent -f
 docker image rm tandrup/snmpsim -f
