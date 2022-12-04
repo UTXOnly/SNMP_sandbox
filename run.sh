@@ -3,13 +3,32 @@
 BRed='\033[1;31m'
 BGreen='\033[1;32m'
 NC='\033[0m' # No Color
+con_name=snmp_dev_1
 
+function parse_yaml {
+   local prefix=$2
+   local s='[[:space:]]*' w='[a-zA-Z0-9_]*' fs=$(echo @|tr @ '\034')
+   sed -ne "s|^\($s\):|\1|" \
+        -e "s|^\($s\)\($w\)$s:$s[\"']\(.*\)[\"']$s\$|\1$fs\2$fs\3|p" \
+        -e "s|^\($s\)\($w\)$s:$s\(.*\)$s\$|\1$fs\2$fs\3|p"  $1 |
+   awk -F$fs '{
+      indent = length($1)/2;
+      vname[indent] = $2;
+      for (i in vname) {if (i > indent) {delete vname[i]}}
+      if (length($3) > 0) {
+         vn=""; for (i=0; i<indent; i++) {vn=(vn)(vname[i])("_")}
+         printf("%s%s%s=\"%s\"\n", "'$prefix'",vn, $2, $3);
+      }
+   }'
+}
+
+parse_yaml ./snmp/dd_config_files/conf.yaml
 
 if [ "$(uname)" == "Darwin" ]; then
     #sed script to replace IP address used in conf.yaml to host.docker.internal
     sed -r -i '' 's/[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}/host.docker.internal/g' ./snmp/dd_config_files/conf.yaml ./snmp/dd_config_files/datadog.yaml
 elif [ "$(expr substr $(uname -s) 1 5)" == "Linux" ]; then
-    sudo sed -i 's/[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}/172.23.0.3/g' ./snmp/dd_config_files/conf.yaml #./snmp/dd_config_files/datadog.yaml
+    sudo sed -i 's/[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}/${con_name}/g' ./snmp/dd_config_files/conf.yaml #./snmp/dd_config_files/datadog.yaml
 else
     echo "${BRed}Unable to detect OS${NC}"
 fi
