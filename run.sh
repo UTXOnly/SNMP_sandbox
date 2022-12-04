@@ -57,7 +57,7 @@ echo -e "${BGreen}\nDo you want to open the .pcap file in Wireshark now? (y|n)${
 read ANSWER
 if [[ $ANSWER == "yes" || $ANSWER == "y" ]]; then
     if [ "$(uname)" == "Darwin" ]; then
-        if [ -f /Applications/Wireshark.app ]; then
+        if [ -d /Applications/Wireshark.app ]; then
             open -n -a /Applications/Wireshark.app ./tcpdump/dump$(date +'%m-%d-%Y').pcap
         else 
             brew install wireshark
@@ -69,7 +69,7 @@ if [[ $ANSWER == "yes" || $ANSWER == "y" ]]; then
             wireshark "./tcpdump/dump$(date +'%m-%d-%Y').pcap"
         else
             sudo apt install wireguard -y
-            wireshark ./tcpdump/*.pcap
+            wireshark ./tcpdump/dump$(date +'%m-%d-%Y').pcap
         fi
     fi
 else
