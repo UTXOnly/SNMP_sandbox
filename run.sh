@@ -9,7 +9,7 @@ if [ "$(uname)" == "Darwin" ]; then
     #sed script to replace IP address used in conf.yaml to host.docker.internal
     sed -r -i '' 's/[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}/host.docker.internal/g' ./snmp/dd_config_files/conf.yaml ./snmp/dd_config_files/datadog.yaml
 elif [ "$(expr substr $(uname -s) 1 5)" == "Linux" ]; then
-    sed 's/[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}/host.docker.internal/g' -i ./snmp/dd_config_files/conf.yaml ./snmp/dd_config_files/datadog.yaml
+    sudo sed -i 's/[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}/172.23.0.3/g' ./snmp/dd_config_files/conf.yaml #./snmp/dd_config_files/datadog.yaml
 else
     echo "${BRed}Unable to detect OS${NC}"
 fi
@@ -21,12 +21,12 @@ docker network create test-net
 echo -e "${BGreen}################# Building docker image##############################${NC}"
 docker-compose up --build --force-recreate -d # Add the -d flag to run container in detached mode
 
-echo -e "${BRed}Docker up${NC}"
+echo -e "${BRed}\nDocker up${NC}"
 
-echo -e "${BGreen}################## TCPDUMP started, please wait 30 seconds #######################################\n${BRed}"
+echo -e "${BGreen}\n################## TCPDUMP started, please wait 30 seconds #######################################\n${BRed}"
 #Starting a tcpdump filtering traffic on port 161 to closer inspect 
-docker exec datadog-agent tcpdump -G 7 port 161 -W 1 -w /tcpdumps/dump_$(date +'%m-%d-%Y').pcap
-echo -e "${NC}\nWriting output of check to ./tcpdump/dump_<DATE>.pcap"
+docker exec datadog-agent tcpdump -c 150 -w /tcpdumps/dump$(date +'%m-%d-%Y').pcap
+echo -e "${NC}\nWriting output of check to ./tcpdump/dump_$(date +'%m-%d-%Y').pcap"
 
 echo -e "${BGreen}\n################### Running SNMP check ####################################${NC}"
 echo -e "${BRed}\nWriting output of check to ./tcpdump/debug_snmp_check.log${NC}"
@@ -39,15 +39,15 @@ read ANSWER
 if [[ $ANSWER == "yes" || $ANSWER == "y" ]]; then
     if [ "$(uname)" == "Darwin" ]; then
         if [ -f /Applications/Wireshark.app ]; then
-            open -n -a /Applications/Wireshark.app ./tcpdump/*.pcap
+            open -n -a /Applications/Wireshark.app ./tcpdump/dump$(date +'%m-%d-%Y').pcap
         else 
             brew install wireshark
             open -n -a /Applications/Wireshark.app ./tcpdump/*.pcap
         fi      
     elif [ "$(expr substr $(uname -s) 1 5)" == "Linux" ]; then
         # Do something under GNU/Linux platform
-        if [ -f /etc/wireshark ]; then
-            wireshark ./tcpdump/*.pcap
+        if [ -d /etc/wireshark ]; then
+            wireshark "./tcpdump/dump$(date +'%m-%d-%Y').pcap"
         else
             sudo apt install wireguard -y
             wireshark ./tcpdump/*.pcap
@@ -55,4 +55,5 @@ if [[ $ANSWER == "yes" || $ANSWER == "y" ]]; then
     fi
 else
     echo -e "${BGreen}Skipping Wireshark finishing install${NC}"
+
 fi
