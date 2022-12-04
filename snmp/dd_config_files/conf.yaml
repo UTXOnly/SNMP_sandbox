@@ -14,10 +14,3 @@ instances:
   loader: core
   community_string: 'mockSNMP'
   use_device_id_as_hostname: true
-  
-  
-
-    
-    
-
-    

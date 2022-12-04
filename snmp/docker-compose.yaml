@@ -2,15 +2,14 @@ version: '3.5'
 
 services:
   snmp:
-    container_name: dd-snmp
+    container_name: ${CONTAINER_NAME}
     image: "tandrup/snmpsim:latest"
     ports:
       - "161:161/udp"
     volumes:
       #- ./data-icore/:/usr/local/share/snmpsim/data
       - ./data/:/usr/local/share/snmpsim/data
-    networks:
-     - test-net
+
 
   datadog:
     container_name: datadog-agent
@@ -30,10 +29,4 @@ services:
       - /proc/:/host/proc/:ro
       - /sys/fs/cgroup:/host/sys/fs/cgroup:ro
       - ./tcpdump/:/tcpdumps/
-    ports:
-      - "8125:8125/udp"  
-    networks:
-      - test-net
-networks:
-  test-net:
-    external: true
+
