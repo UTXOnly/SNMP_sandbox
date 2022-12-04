@@ -59,6 +59,7 @@ if [[ $ANSWER == "yes" || $ANSWER == "y" ]]; then
     if [ "$(uname)" == "Darwin" ]; then
         if [ -d /Applications/Wireshark.app ]; then
             open -n -a /Applications/Wireshark.app ./tcpdump/dump$(date +'%m-%d-%Y').pcap
+            open -n -a /Applications/Wireshark.app ./tcpdump/*.pcap
         else 
             brew install wireshark
             open -n -a /Applications/Wireshark.app ./tcpdump/*.pcap

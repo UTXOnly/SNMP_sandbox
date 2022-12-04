@@ -14,7 +14,7 @@ To validate custom SNMP profiles along with Datadog agent configuration
 Simply clone the repo, add your custom SNMP profile to test along with `conf.yaml` file to test it against.
 
 * Custom profile to be tested must be named `_test_profile.yaml` and configuration file named `conf.yaml`
-* Both `_test_profile.yaml` and `conf.yaml` must be placed in the `/snmp` directory of this repo for this program to run properly
+* Both `_test_profile.yaml` and `conf.yaml` must be placed in the `/snmp/dd_configs` directory of this repo for this program to run properly
 * The Datadog agent will only collect metrics that are defined in a profile, if the `OID` isn't in the `.snmprec` file, it won't be collected by Datadog
 
 This script requires a `.env` file to be placed in the `snmp/` directory for `docker-compose` to read it. Your `.env` file should contain environmental variables needed for your docker containers, in this case your `DD_API_KEY`. The rest of the env var can be added in the `docker-compose.yaml` file.
@@ -48,14 +48,23 @@ The run script builds fresh Docker images at runtime, leveraging the docker-comp
 * Commands used to clone repo and move configuration files into the appropriate directories.
   * `git clone git@github.com:UTXOnly/SNMP_sandbox.git`
     *  This will clone the repo and create a new folder `SNMP_sandbox` , `run` and `destroy` commands are run from here
-  * `cp <Filepath_to_conf.yaml>/conf.yaml ./snmp/conf.yaml`
+  * `cp <Filepath_to_conf.yaml>/conf.yaml ./snmp/dd_configs.conf.yaml`
     * When run from the `SNMP_sandbox` directory, copies configuration file to appropriate directory
-  * `cp <Filepath_to_test_profile.yaml>/conf.yaml ./snmp/_test_profile.yaml`
+  * `cp <Filepath_to_test_profile.yaml>/conf.yaml ./snmp/dd_configs/_test_profile.yaml`
     * When run from the `SNMP_sandbox` directory, copies custom profile to appropriate directory 
+# TCPDUMP and Manual SNMP check
+* TCPDUMP and manual SNMP check will be placed in the `./snmp/tcpdump` directory
+  * You will be prompted at the end of the run script if you would like to open the `.pcap` file in Wireshark, if you do not have it installed, the script will install it for you and open up the new `.pcap` file for your review.
 
-[Gif of run.sh script](https://a.cl.ly/9Zuz252m)
 
-https://user-images.githubusercontent.com/49233513/204433212-dfd4f4cd-c5be-4312-80d2-5f6fdc99ad71.mp4
+
+
+
+
+
+https://user-images.githubusercontent.com/49233513/204659435-33a6e04f-2f6b-4b52-895b-9bd242b2b44b.mp4
+
+
 
 
 
