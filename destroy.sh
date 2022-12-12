@@ -3,6 +3,7 @@ source ./snmp/.env
 
 docker kill datadog-agent
 docker kill $CONTAINER_NAME
+docker kill $CONTAINER_NAME_2
 docker network rm test-net
 docker image rm datadog/agent -f
 docker image rm tandrup/snmpsim -f
