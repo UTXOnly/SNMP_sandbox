@@ -22,7 +22,10 @@ function parse_yaml {
    }'
 }
 
-parse_yaml ./snmp/dd_config_files/conf.yaml
+#parse_yaml ./snmp/dd_config_files/conf.yaml
+
+./parse_conf.sh
+
 
 if [ "$(uname)" == "Darwin" ]; then
     #sed script to replace IP address used in conf.yaml to host.docker.internal

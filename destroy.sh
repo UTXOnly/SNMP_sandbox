@@ -2,11 +2,10 @@
 source ./snmp/.env
 
 docker kill datadog-agent
-docker kill $CONTAINER_NAME
-docker kill $CONTAINER_NAME_2
-docker network rm test-net
+docker kill *-container
+docker network rm static-network
 docker image rm datadog/agent -f
-docker image rm tandrup/snmpsim -f
-docker image rm snmp-datadog -f
+docker image rm bhartford419/*-container -f
 docker rmi -f $(docker images -aq) #Only uncomment if you want REMOVE ALL DOCKER IMAGES!!!
 sudo rm -r ./snmp/tcpdump
+sudo rm -r ./parsed_yaml
