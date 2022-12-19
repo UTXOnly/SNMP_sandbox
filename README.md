@@ -84,6 +84,13 @@ https://user-images.githubusercontent.com/49233513/204659435-33a6e04f-2f6b-4b52-
 
 
 
+[NPM Map](https://a.cl.ly/DOukok7r)
+
+
+
+
+
+
 ## Configuration Notes
 
 `conf.yaml` should match what is shown in [example config file](https://github.com/DataDog/integrations-core/blob/master/snmp/datadog_checks/snmp/data/conf.yaml.example)
@@ -194,7 +201,7 @@ metrics:
 * From the `conversion` directory, run the `convert.sh` script
 * You will be prompted to enter a `MIB` name. Please select any available MIB on [Best Monitoring Tools](https://bestmonitoringtools.com/mibdb/mibdb_search.php)
 * A script will convert the `MIB` file and appened it to an exisiting `mocksnmp.snmprec` file within the appropriate appropriate `data` directory
-* you can now run the `run.sh` script from the main repo directory `SNMP-sandbox`
+* You can now run the `run.sh` script from the main repo directory `SNMP-sandbox`
 
 
 ## To Do
