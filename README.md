@@ -88,7 +88,7 @@ https://user-images.githubusercontent.com/49233513/204659435-33a6e04f-2f6b-4b52-
 
 `conf.yaml` should match what is shown in [example config file](https://github.com/DataDog/integrations-core/blob/master/snmp/datadog_checks/snmp/data/conf.yaml.example)
 
-* For now you will manually need to add ip addresses to your `instances in your `.conf.yaml` file to an address within the `172.20.0.0/16` subnet. The program also loads the `_test_profile.yaml` configuration file to the `/etc/datadog-agent/conf.d/snmp.d/profiles` directory.
+* For now you will manually need to add ip addresses to your `instances` in your `.conf.yaml` file to an address within the `172.20.0.0/16` subnet. The program also loads the `_test_profile.yaml` configuration file to the `/etc/datadog-agent/conf.d/snmp.d/profiles` directory.
 * Filename for custom profile to test must be `_test_profile.yaml` for the program to work properly
 
 * Below is the example `conf.yaml` file included in this repo, this will work right out of the box.
@@ -190,8 +190,11 @@ metrics:
         name: tcpActiveOpens # what to use in the metric name; can be anything
   ```
   
-  ##### How the Integration Works
-  ![SNMP containers](https://user-images.githubusercontent.com/49233513/198899525-3de73341-6863-4640-8fdc-64fc7b06e8ea.png)
+  ##### How to create your own snmprec files
+* From the `conversion` directory, run the `convert.sh` script
+* You will be prompted to enter a `MIB` name. Please select any available MIB on [Best Monitoring Tools](https://bestmonitoringtools.com/mibdb/mibdb_search.php)
+* A script will convert the `MIB` file and appened it to an exisiting `mocksnmp.snmprec` file within the appropriate appropriate `data` directory
+* you can now run the `run.sh` script from the main repo directory `SNMP-sandbox`
 
 
 ## To Do
