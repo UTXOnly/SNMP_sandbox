@@ -42,7 +42,8 @@ You can then add the necessary environment variables as depicted below:
 
 
 
-https://user-images.githubusercontent.com/49233513/208342823-98bfe471-4220-48af-883d-84d67e7f33e4.mp4
+https://user-images.githubusercontent.com/49233513/208342972-31622f9f-d6dd-47d3-9f68-a7cdf93a8477.mp4
+
 
 
 
