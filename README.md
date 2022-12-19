@@ -10,12 +10,14 @@ To validate custom SNMP profiles along with Datadog agent configuration
 * Validate tags used and test custom dashboards
 
 ##### What you need to do
-* Clone the repoistory
+* Clone the repository
 * Add a `snmp.d/comf.yaml` file
   * Optionally add `datadog.yanl` file for auto-discovery
 * Add custom SNMP profile
 * Use `convert.sh` script to create `.snmprec` file if needed
 * Use `run.sh` script to run all containers and start using `NDM`/`NPM`
+
+
 
 ## Instructions
 
@@ -37,7 +39,12 @@ You can then add the necessary environment variables as depicted below:
 
 ##### File Placement
 
-![run sh — SNMP_sandbox 2022-11-28 at 10 56 22 PM](https://user-images.githubusercontent.com/49233513/204435564-8422ad77-758e-4805-acfc-01f65de1b28c.jpg)
+
+
+
+https://user-images.githubusercontent.com/49233513/208342972-31622f9f-d6dd-47d3-9f68-a7cdf93a8477.mp4
+
+
 
 
 
@@ -63,17 +70,6 @@ The run script builds fresh Docker images at runtime, leveraging the docker-comp
 # TCPDUMP and Manual SNMP check
 * TCPDUMP and manual SNMP check will be placed in the `./snmp/tcpdump` directory
   * You will be prompted at the end of the run script if you would like to open the `.pcap` file in Wireshark, if you do not have it installed, the script will install it for you and open up the new `.pcap` file for your review.
-
-
-
-
-
-
-
-https://user-images.githubusercontent.com/49233513/204659435-33a6e04f-2f6b-4b52-895b-9bd242b2b44b.mp4
-
-
-
 
 
 
