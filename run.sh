@@ -4,7 +4,6 @@ BRed='\033[1;31m'
 BGreen='\033[1;32m'
 NC='\033[0m' # No Color
 
-
 function parse_yaml {
    local prefix=$2
    local s='[[:space:]]*' w='[a-zA-Z0-9_]*' fs=$(echo @|tr @ '\034')
@@ -22,27 +21,15 @@ function parse_yaml {
    }'
 }
 
-#parse_yaml ./snmp/dd_config_files/conf.yaml
-
 ./parse_conf.sh
-
-
-if [ "$(uname)" == "Darwin" ]; then
-    #sed script to replace IP address used in conf.yaml to host.docker.internal
-    sed -r -i '' 's/[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}/host.docker.internal/g' ./snmp/dd_config_files/conf.yaml ./snmp/dd_config_files/datadog.yaml
-elif [ "$(expr substr $(uname -s) 1 5)" == "Linux" ]; then
-    #sudo sed -Ei "s|[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}|"$CONTAINER_NAME"|g" ./snmp/dd_config_files/conf.yaml #./snmp/dd_config_files/datadog.yaml
-    echo "Linux"
-else
-    echo "${BRed}Unable to detect OS${NC}"
-fi
 
 cd snmp
 echo -e "${BGreen}##################### Creating docker network############################${NC}"
-#docker network create test-net
+#docker network create static-network
 
 echo -e "${BGreen}################# Building docker image##############################${NC}"
 docker network create static-network
+# Creates a Datadog container with tcpdump running inside
 docker-compose up --build --force-recreate -d # Add the -d flag to run container in detached mode
 
 echo -e "${BRed}\nDocker up${NC}"
@@ -64,6 +51,7 @@ echo -e "${BGreen}\nDo you want to open the .pcap file in Wireshark now? (y|n)${
 read ANSWER
 if [[ $ANSWER == "yes" || $ANSWER == "y" ]]; then
     if [ "$(uname)" == "Darwin" ]; then
+    #Mac branch
         if [ -d /Applications/Wireshark.app ]; then
             open -n -a /Applications/Wireshark.app ./tcpdump/dump$(date +'%m-%d-%Y').pcap
             open -n -a /Applications/Wireshark.app ./tcpdump/*.pcap
@@ -72,7 +60,7 @@ if [[ $ANSWER == "yes" || $ANSWER == "y" ]]; then
             open -n -a /Applications/Wireshark.app ./tcpdump/*.pcap
         fi      
     elif [ "$(expr substr $(uname -s) 1 5)" == "Linux" ]; then
-        # Do something under GNU/Linux platform
+        # Linux branch
         if [ -d /etc/wireshark ]; then
             wireshark "./tcpdump/dump$(date +'%m-%d-%Y').pcap"
         else

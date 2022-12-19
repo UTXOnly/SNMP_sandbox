@@ -18,18 +18,14 @@ function parse_yaml {
    }'
 }
 
-
 parse_yaml ./snmp/dd_config_files/conf.yaml > parsed_yaml
 
-
-
-# Iterate the loop to read and print each array element
+# Iterate through the IP addresses parsed from conf.yaml > parsed.yaml file
+# Creates a new container for each IP address found in conf.yaml
 
 for ip_address in $(awk ' /ip_address/{print $3}' ./snmp/dd_config_files/conf.yaml)
 do
    IPs+=( $ip_address )
-   #IPs_with_dashes+=( ${})
-   #echo $vari
    IPs_with_dashes=$(sed "s|\.|\-|g" <<<$ip_address )
    tee -a ./snmp/docker-compose.yaml << EOF
 
@@ -48,7 +44,6 @@ do
 EOF
   
 done
-
 
 tee -a ./snmp/docker-compose.yaml << EOF
 networks:
