@@ -84,7 +84,8 @@ https://user-images.githubusercontent.com/49233513/204659435-33a6e04f-2f6b-4b52-
 
 
 
-[NPM Map](https://a.cl.ly/DOukok7r)
+![NPM Map](https://user-images.githubusercontent.com/49233513/208335074-17b407ab-1f21-4334-ac2e-57c9912cee0d.gif)
+
 
 
 
