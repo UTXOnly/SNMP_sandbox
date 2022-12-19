@@ -1,6 +1,6 @@
 version: '3.5'
 services:
-  datadog:
+  datadogmac:
     container_name: datadog-agent
     build: ./dd_config_files/
     environment:
@@ -34,3 +34,38 @@ services:
     networks:
       static-network:
         ipv4_address: 172.20.128.2
+
+  datadog2mac:
+    container_name: npm-agent
+    build: ./dd_config_files/
+    environment:
+      ## GLOBALS
+    - DD_API_KEY=${DD_API_KEY}
+    - DD_SITE=datadoghq.com
+    - DD_HOSTNAME=brian.snmp.sandbox.docker
+    - DD_TAGS=env:sandbox owner:brian
+    - DD_DOGSTATSD_NON_LOCAL_TRAFFIC=true
+    - DD_DOCKER_LABELS_AS_TAGS=true
+    - DD_DOCKER_ENV_AS_TAGS=true
+    - DD_SYSTEM_PROBE_ENABLED=true
+    - DD_PROCESS_AGENT_ENABLED=true
+    volumes:
+    - /var/run/docker.sock:/var/run/docker.sock:ro
+    - /proc/:/host/proc/:ro
+    - /sys/fs/cgroup:/host/sys/fs/cgroup:ro
+    - ./tcpdump/:/tcpdumps/
+    - /sys/kernel/debug:/sys/kernel/debug
+    cap_add:
+    - SYS_ADMIN
+    - SYS_RESOURCE
+    - SYS_PTRACE
+    - NET_ADMIN
+    - NET_BROADCAST
+    - NET_RAW
+    - IPC_LOCK
+    - CHOWN
+    security_opt:
+    - apparmor:unconfined
+    networks:
+      static-network:
+        ipv4_address: 172.20.128.3

@@ -8,20 +8,12 @@ init_config:
       
 instances:
 
-- ip_address: 172.20.128.3
-  port: 161
-  snmp_version: 2
-  profile: custom-profile
-  loader: core
-  community_string: 'snmpsim'
-  use_device_id_as_hostname: true
-
 - ip_address: 172.20.128.4
   port: 161
   snmp_version: 2
   profile: custom-profile
   loader: core
-  community_string: 'mockSNMP'
+  community_string: 'mocksnmp'
   use_device_id_as_hostname: true
 
 - ip_address: 172.20.128.5
@@ -37,4 +29,12 @@ instances:
   snmp_version: 2
   profile: custom-profile
   loader: core
-  community_string: 'snmpsim'
+  community_string: 'mocksnmp'
+  use_device_id_as_hostname: true
+
+- ip_address: 172.20.128.7
+  port: 161
+  snmp_version: 2
+  profile: custom-profile
+  loader: core
+  community_string: 'mocksnmp'

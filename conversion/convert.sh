@@ -22,11 +22,11 @@ cd ../../snmp/data/
 if [ "$(uname)" == "Darwin" ]; then
     #Mac branch
         #Replace sysDescr values
-        sed sed -r -i '' '/^1.3.6.1.2.1.1.1.0*/c\1.3.6.1.2.1.1.1.0|4|Test_SNMP' mocksnmp.snmprec
+        sed -i '' 's/.*1.3.6.1.2.1.1.1.0.*/1.3.6.1.2.1.1.1.0|4|Test_SNMP/' mocksnmp.snmprec
         #Replace sysName values
-        sed sed -r -i '' '/^1.3.6.1.2.1.1.5.0*/c\1.3.6.1.2.1.1.5.0|4|Test_SNMP device' mocksnmp.snmprec
+        sed -i '' 's/.*1.3.6.1.2.1.1.5.0.*/1.3.6.1.2.1.1.5.0|4|Test_SNMP device/' mocksnmp.snmprec
         #Replace sysLocation values
-        sed sed -r -i '' '/^1.3.6.1.2.1.1.6.0*/c\1.3.6.1.2.1.1.6.0|4|Boston, MA' mocksnmp.snmprec   
+        sed -i '' 's/.*1.3.6.1.2.1.1.6.0.*/1.3.6.1.2.1.1.6.0|4|Boston, MA/' mocksnmp.snmprec   
     elif [ "$(expr substr $(uname -s) 1 5)" == "Linux" ]; then
         # Linux branch
         #Replace sysDescr values
