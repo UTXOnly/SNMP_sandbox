@@ -9,6 +9,14 @@ To validate custom SNMP profiles along with Datadog agent configuration
 * Simulate a SNNP device being polled and reporting metrics to Datadog agent
 * Validate tags used and test custom dashboards
 
+##### What you need to do
+* Clone the repoistory
+* Add a `snmp.d/comf.yaml` file
+  * Optionally add `datadog.yanl` file for auto-discovery
+* Add custom SNMP profile
+* Use `convert.sh` script to create `.snmprec` file if needed
+* Use `run.sh` script to run all containers and start using `NDM`/`NPM`
+
 ## Instructions
 
 Simply clone the repo, add your custom SNMP profile to test along with `conf.yaml` file to test it against.
@@ -21,7 +29,7 @@ This script requires a `.env` file to be placed in the `snmp/` directory for `do
 
 If you don't already have a `.env` file, you can create one by running the command below in the `snmp` directory :
 ```
-touch .env
+nano .env
 ```
 You can then add the necessary environment variables as depicted below:
 
@@ -80,7 +88,7 @@ https://user-images.githubusercontent.com/49233513/204659435-33a6e04f-2f6b-4b52-
 
 `conf.yaml` should match what is shown in [example config file](https://github.com/DataDog/integrations-core/blob/master/snmp/datadog_checks/snmp/data/conf.yaml.example)
 
-* The program will automatically correct the `value` corresponding to the `ip_address:` key to `host.docker.internal`. The program also loads the `_test_profile.yaml` configuration file to the `/etc/datadog-agent/conf.d/snmp.d/profiles` directory.
+* For now you will manually need to add ip addresses to your `instances in your `.conf.yaml` file to an address within the `172.20.0.0/16` subnet. The program also loads the `_test_profile.yaml` configuration file to the `/etc/datadog-agent/conf.d/snmp.d/profiles` directory.
 * Filename for custom profile to test must be `_test_profile.yaml` for the program to work properly
 
 * Below is the example `conf.yaml` file included in this repo, this will work right out of the box.
@@ -98,7 +106,7 @@ instances:
   snmp_version: 2
   profile: custom-profile
   loader: core
-  community_string: 'mockSNMP'
+  community_string: 'mocksnmp'
   use_device_id_as_hostname: true
   ```
   
