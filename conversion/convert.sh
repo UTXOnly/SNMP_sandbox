@@ -12,7 +12,6 @@ read MIB_NAME
 cd ./MIB_to_SNMPrec
 ./run.sh ${MIB_NAME}
 
-
 echo $(pwd)
 cat ./csv+snmprec/MIB.snmprec | tee -a ../../snmp/data/mocksnmp.snmprec
 rm ./csv+snmprec/MIB.snmprec

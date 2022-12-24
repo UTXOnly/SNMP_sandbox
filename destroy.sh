@@ -9,6 +9,7 @@ sudo rm -r ./parsed_yaml
 if [ "$(uname)" == "Darwin" ]; then
     #Mac branch
     sed -r -i '' '72,$d' ./snmp/docker-compose.yaml
+    sed -r -i '' '2808,$d' ./snmp/data/mocksnmp.snmprec
 elif [ "$(expr substr $(uname -s) 1 5)" == "Linux" ]; then
     # Linux branch
     sed -i '72,$d' ./snmp/docker-compose.yaml
