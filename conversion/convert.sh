@@ -5,6 +5,16 @@ BGreen='\033[1;32m'
 BBlue='\u001b[34m'
 NC='\033[0m' # No Color
 
+echo -e "${BGreen}Would you like to convert snmpwalk output to snmprec?\n${NC}"
+read snmprec_ans
+
+if [[ $snmprec_ans == "yes" || $snmprec_ans == "y" ]]; then
+    echo "Please place snmpwalkoutput in this directory and add .txt extension if needed"
+    ./convert_snmpwalk.sh
+else
+    echo -e "${BGreen}Moving on...${NC}"
+fi
+
 echo -e "${BGreen}Please enter the MIB name you would like to convert:\n${NC}"
 read MIB_NAME
 #sed "s/$/${MIB_NAME}/" -i .env
