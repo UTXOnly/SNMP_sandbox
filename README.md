@@ -207,7 +207,9 @@ metrics:
 
 ## To Do
 * Add functionality for SNMP `v3` 
-* Create conversion program to translate `snmpwalk` output to `.snmprec` format
-  * Thinking of a mix of `BASH` and `Python` scripts possibly???
+* Add SNMP trap functionality
+* Automatically assign ip addresses and snmp profiles if not using single snmprec
+* ~~Create conversion program to translate `snmpwalk` output to `.snmprec` format~~
+
   
 
