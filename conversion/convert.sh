@@ -39,22 +39,29 @@ function convert_snmpwalk (){
 }
 if [[ $snmprec_ans == "yes" || $snmprec_ans == "y" ]]; then
     echo "Please place snmpwalkoutput in this directory and add .txt extension if needed"
-    convert_snmpwalk "./*.txt"
+    echo $(pwd)
+    #Call convert snmpwalk function to run sed scripts on all *.txt files, this can be changed
+    convert_snmpwalk "./*.txt" 
+    #Pipe converted snmpwalk output into exiting snmprec file for ease of use (wont need to change conf.yaml)
+    cat *.txt | tee -a ../snmp/data/mocksnmp.snmprec
 else
     echo -e "${BGreen}Moving on...${NC}"
 fi
 
 echo -e "${BGreen}Please enter the MIB name you would like to convert:\n${NC}"
 read MIB_NAME
-#sed "s/$/${MIB_NAME}/" -i .env
 
-cd ./MIB_to_SNMPrec
-./run.sh ${MIB_NAME}
-#Pipe MIB output, appenend into data/snmprec file
-cat ./csv+snmprec/MIB.snmprec | tee -a ../../snmp/data/mocksnmp.snmprec
-#Remove uneeded MIB file, change back to snmp/data
-rm ./csv+snmprec/MIB.snmprec
-cd ../../snmp/data/
+if [[ $MIB_NAME == "yes" || $MIB_NAME == "y" ]]; then
+    cd ./MIB_to_SNMPrec
+    ./run.sh ${MIB_NAME}
+    #Pipe MIB output, appenend into data/snmprec file
+    cat ./csv+snmprec/MIB.snmprec | tee -a ../../snmp/data/mocksnmp.snmprec
+    #Remove uneeded MIB file, change back to snmp/data
+    rm ./csv+snmprec/MIB.snmprec
+    cd ../../snmp/data/
+else
+    echo -e "${BGreen}Moving on...${NC}"
+fi
 
 
 if [ "$(uname)" == "Darwin" ]; then
