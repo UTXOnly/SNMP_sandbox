@@ -24,11 +24,19 @@ docker exec datadog-agent tcpdump -T snmp -c 400 -w /tcpdumps/dump$(date +'%m-%d
 
 echo -e "${NC}\nWriting output of check to ./tcpdump/dump_$(date +'%m-%d-%Y').pcap"
 
+echo -e "${BGreen}\nRunning comparison of OID's configured in profile to OID in snmprec${NC}"
+echo -e "${BRed}\nThe following OID's in your snmp profile were collected\n${NC}"
+cd ..
+python3 compare.py
+
 echo -e "${BGreen}\n################### Running SNMP check ####################################${NC}"
 echo -e "${BRed}\nWriting output of check to ./tcpdump/debug_snmp_check.log${NC}"
+cd snmp
 
 #Run DEBUG level SNMP check, out put to file locally
 docker exec datadog-agent bash -c 'agent check snmp -l debug > /tcpdumps/debug_snmp_check.log'
+
+
 
 echo -e "${BGreen}\nDo you want to open the .pcap file in Wireshark now? (y|n)${NC}?"
 read ANSWER

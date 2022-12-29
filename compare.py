@@ -2,8 +2,8 @@ import re
 BRed='\033[1;31m'
 BGreen='\033[1;32m'
 NC='\033[0m' 
-test_profile = open ("../snmp/dd_config_files/full_profile.yaml", "r")
-snmprec_file = open ("../snmp/data/mocksnmp.snmprec", "r")
+test_profile = open ("./snmp/dd_config_files/full_profile.yaml", "r")
+snmprec_file = open ("./snmp/data/mocksnmp.snmprec", "r")
 profile_lines = []
 snmprec_lines = []
 i = 0 
@@ -21,4 +21,4 @@ for line in profile_lines:
         i += 1
         print(stripped)
 
-print(f"{BRed}There were {NC}", i, f"{BRed} OIDs configured in your profile{NC}\n", ii,  f"{BRed} OID's were not detected in your profile{NC}")
+print(f"{BRed}\nThere were {NC}", i, f"{BRed} OIDs configured in your profile{NC}\n", ii,  f"{BRed} OID's from your profile were not detected in your snmprec file{NC}")
