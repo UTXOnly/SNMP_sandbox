@@ -11,8 +11,9 @@ To validate custom SNMP profiles along with Datadog agent configuration
 
 ##### What you need to do
 * Clone the repository
-* Add a `snmp.d/comf.yaml` file
-  * Optionally add `datadog.yanl` file for auto-discovery
+* Add a `./snmp/.env` file to add `DD_API_KEY`
+* Add a `snmp.d/conf.yaml` file
+  * Optionally add `datadog.yaml` file for auto-discovery
 * Add custom SNMP profile
 * Use `convert.sh` script to create `.snmprec` file if needed
 * Use `run.sh` script to run all containers and start using `NDM`/`NPM`
