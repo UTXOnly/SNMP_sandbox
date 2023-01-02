@@ -4,14 +4,22 @@ BRed='\033[1;31m'
 BGreen='\033[1;32m'
 NC='\033[0m' # No Color
 
-./parse_conf.sh
+echo -e "${BGreen}\nWould you like to:\n1) Monitor Individual Devices\n2) Test Autodiscovery\n${NC}\nPlease select 1 or 2 and press ENTER\n"
+read AD_ANSWER
 
+if [ $AD_ANSWER == 1 ]; then
+    ./parse_conf.sh ${AD_ANSWER}
+elif [ $AD_ANSWER == 2 ]; then
+    ./parse_conf.sh ${AD_ANSWER}
+else
+    echo -e "\n${BRed}Invalid selectiong, moving on...${NC}"
+fi
 cd snmp
 echo -e "${BGreen}##################### Creating docker network############################${NC}"
-#docker network create static-network
+docker network create static-network
 
 echo -e "${BGreen}################# Building docker image##############################${NC}"
-docker network create static-network
+
 # Creates a Datadog container with tcpdump running inside
 docker-compose up --build --force-recreate -d # Add the -d flag to run container in detached mode
 
@@ -25,7 +33,7 @@ docker exec datadog-agent tcpdump -T snmp -c 400 -w /tcpdumps/dump$(date +'%m-%d
 echo -e "${NC}\nWriting output of check to ./tcpdump/dump_$(date +'%m-%d-%Y').pcap"
 
 echo -e "${BGreen}\nRunning comparison of OID's configured in profile to OID in snmprec${NC}"
-echo -e "${BRed}\nThe following OID's in your snmp profile were collected\n${NC}"
+echo -e "${BRed}\nThe following OID's in your snmp profile were configured\n${NC}"
 cd ..
 python3 compare.py
 
@@ -35,8 +43,6 @@ cd snmp
 
 #Run DEBUG level SNMP check, out put to file locally
 docker exec datadog-agent bash -c 'agent check snmp -l debug > /tcpdumps/debug_snmp_check.log'
-
-
 
 echo -e "${BGreen}\nDo you want to open the .pcap file in Wireshark now? (y|n)${NC}?"
 read ANSWER

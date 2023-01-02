@@ -5,5 +5,9 @@ extends:
   - _generic-udp.yaml
   - _generic-router-ospf.yaml
   - _generic-host-resources.yaml
+  - _cisco-generic.yaml
 
 
+# Provide metrics that can be found in Dell devices that are or contain DRAC components
+
+# Profile for Cisco Nexus devices

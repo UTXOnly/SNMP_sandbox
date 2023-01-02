@@ -22,12 +22,12 @@ parse_yaml ./snmp/dd_config_files/conf.yaml > parsed_yaml
 
 # Iterate through the IP addresses parsed from conf.yaml > parsed.yaml file
 # Creates a new container for each IP address found in conf.yaml
-
-for ip_address in $(awk ' /ip_address/{print $3}' ./snmp/dd_config_files/conf.yaml)
-do
-   IPs+=( $ip_address )
-   IPs_with_dashes=$(sed "s|\.|\-|g" <<<$ip_address )
-   tee -a ./snmp/docker-compose.yaml << EOF
+if [ $1 == 1 ]; then
+    for ip_address in $(awk ' /ip_address/{print $3}' ./snmp/dd_config_files/conf.yaml)
+    do
+        IPs+=( $ip_address )
+        IPs_with_dashes=$(sed "s|\.|\-|g" <<<$ip_address )
+        tee -a ./snmp/docker-compose.yaml << EOF
 
   container-${IPs_with_dashes}:
     container_name: ${IPs_with_dashes}-container
@@ -42,13 +42,38 @@ do
       static-network:
         ipv4_address: ${ip_address}
 EOF
-  
-done
+    done
+elif [ $1 == 2 ]; then
+    for host in {4..6}
+    do
+
+       #IPs+=( $ip_address )
+       #IPs_with_dashes=$(sed "s|\.|\-|g" <<<$ip_address )
+
+        tee -a ./snmp/docker-compose.yaml << EOF
+
+  container-172-20-0-${host}:
+    container_name: 172.20.0.${host}-container
+    image: tandrup/snmpsim:latest
+    environment:
+      - DD_TAGS=snmp_container:172.20.0.${host}
+    ports:
+      - "161"
+    volumes:
+      - ./data/:/usr/local/share/snmpsim/data
+    networks:
+      static-network:
+        ipv4_address: 172.20.0.${host}
+EOF
+    done
+else
+    echo -e "${BRed}Invalid${NC}"
+fi
 
 tee -a ./snmp/docker-compose.yaml << EOF
 networks:
   static-network:
     ipam:
       config:
-        - subnet: 172.20.0.0/16 
+        - subnet: 172.20.0.0/24
 EOF

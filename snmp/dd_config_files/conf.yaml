@@ -7,34 +7,52 @@ init_config:
       definition_file: _test_profile.yaml
       
 instances:
+######
+######- ip_address: 172.20.128.4
+######  port: 161
+######  snmp_version: 2
+######  profile: custom-profile
+######  loader: core
+######  community_string: 'mocksnmp'
+######  use_device_id_as_hostname: true
+######
+######- ip_address: 172.20.128.5
+######  port: 161
+######  snmp_version: 2
+######  profile: custom-profile
+######  loader: core
+######  community_string: 'mocksnmp'
+######  use_device_id_as_hostname: true
+######
+######- ip_address: 172.20.128.6
+######  port: 161
+######  snmp_version: 2
+######  profile: custom-profile
+######  loader: core
+######  community_string: 'mocksnmp'
+######  use_device_id_as_hostname: true
+######
+######- ip_address: 172.20.128.7
+######  port: 161
+######  snmp_version: 2
+######  profile: custom-profile
+######  loader: core
+######  community_string: 'mocksnmp'
+######
 
-- ip_address: 172.20.128.4
-  port: 161
-  snmp_version: 2
-  profile: custom-profile
-  loader: core
-  community_string: 'mocksnmp'
-  use_device_id_as_hostname: true
+#listeners:
+#  - name: snmp
 
-- ip_address: 172.20.128.5
-  port: 161
-  snmp_version: 2
-  profile: custom-profile
-  loader: core
-  community_string: 'mocksnmp'
-  use_device_id_as_hostname: true
-
-- ip_address: 172.20.128.6
-  port: 161
-  snmp_version: 2
-  profile: custom-profile
-  loader: core
-  community_string: 'mocksnmp'
-  use_device_id_as_hostname: true
-
-- ip_address: 172.20.128.7
-  port: 161
-  snmp_version: 2
-  profile: custom-profile
-  loader: core
-  community_string: 'mocksnmp'
+##snmp_listener:
+##  workers: 5  # number of workers used to discover devices concurrently
+##  discovery_interval: 3600  # interval between each autodiscovery in seconds
+##  loader: core  # use core check implementation of SNMP integration. recommended
+##  use_device_id_as_hostname: true  # recommended
+##configs:
+  - network_address: 172.20.0.0/24 # CIDR subnet - 700 VPN ROUTER
+    snmp_version: 2
+    port: 161 # Default port is 161, as long as device is listening on port 161, you can omit this key:value pair
+    community_string: 'full'
+    #profile: custom-profile
+    tags:
+    - "auto-discovery:auto-discovered-device"
