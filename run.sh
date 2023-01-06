@@ -4,16 +4,7 @@ BRed='\033[1;31m'
 BGreen='\033[1;32m'
 NC='\033[0m' # No Color
 
-echo -e "${BGreen}\nWould you like to:\n1) Monitor Individual Devices\n2) Test Autodiscovery\n${NC}\nPlease select 1 or 2 and press ENTER\n"
-read AD_ANSWER
-
-if [ $AD_ANSWER == 1 ]; then
-    ./parse_conf.sh ${AD_ANSWER}
-elif [ $AD_ANSWER == 2 ]; then
-    ./parse_conf.sh ${AD_ANSWER}
-else
-    echo -e "\n${BRed}Invalid selectiong, moving on...${NC}"
-fi
+./parse_conf.sh
 cd snmp
 echo -e "${BGreen}##################### Creating docker network############################${NC}"
 docker network create static-network
@@ -66,6 +57,5 @@ if [[ $ANSWER == "yes" || $ANSWER == "y" ]]; then
         fi
     fi
 else
-    echo -e "${BGreen}Skipping Wireshark finishing install${NC}"
-
+    echo -e "${BGreen}Skipping Wireshark${NC}"
 fi
