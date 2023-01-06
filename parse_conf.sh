@@ -22,12 +22,13 @@ parse_yaml ./snmp/dd_config_files/conf.yaml > parsed_yaml
 
 # Iterate through the IP addresses parsed from conf.yaml > parsed.yaml file
 # Creates a new container for each IP address found in conf.yaml
-if [ $1 == 1 ]; then
-    for ip_address in $(awk ' /ip_address/{print $3}' ./snmp/dd_config_files/conf.yaml)
-    do
-        IPs+=( $ip_address )
-        IPs_with_dashes=$(sed "s|\.|\-|g" <<<$ip_address )
-        tee -a ./snmp/docker-compose.yaml << EOF
+# Also creates containers for auto-discovery subnet, will only auto-discover first network-address key detected
+
+for ip_address in $(awk ' /ip_address/{print $3}' ./snmp/dd_config_files/conf.yaml)
+do
+    IPs+=( $ip_address )
+    IPs_with_dashes=$(sed "s|\.|\-|g" <<<$ip_address )
+    tee -a ./snmp/docker-compose.yaml << EOF
 
   container-${IPs_with_dashes}:
     container_name: ${IPs_with_dashes}-container
@@ -42,21 +43,18 @@ if [ $1 == 1 ]; then
       static-network:
         ipv4_address: ${ip_address}
 EOF
-    done
-elif [ $1 == 2 ]; then
-    for host in {4..6}
+done
+for ip_address in $(awk ' /network_address/{print $3; exit}' ./snmp/dd_config_files/conf.yaml)
+do
+    for host in {101..104}
     do
-
-       #IPs+=( $ip_address )
-       #IPs_with_dashes=$(sed "s|\.|\-|g" <<<$ip_address )
-
         tee -a ./snmp/docker-compose.yaml << EOF
 
   container-172-20-0-${host}:
     container_name: 172.20.0.${host}-container
-    image: tandrup/snmpsim:latest
+    image: bhartford419/snmp_container:latest
     environment:
-      - DD_TAGS=snmp_container:172.20.0.${host}
+      - DD_TAGS=snmp_container:172.20.0.${host},auto-discovery:auto-discovered-device
     ports:
       - "161"
     volumes:
@@ -66,10 +64,7 @@ elif [ $1 == 2 ]; then
         ipv4_address: 172.20.0.${host}
 EOF
     done
-else
-    echo -e "${BRed}Invalid${NC}"
-fi
-
+done
 tee -a ./snmp/docker-compose.yaml << EOF
 networks:
   static-network:
