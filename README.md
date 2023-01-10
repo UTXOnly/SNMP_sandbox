@@ -91,6 +91,10 @@ The run script builds fresh Docker images at runtime, leveraging the docker-comp
 
 ## Configuration Notes
 
+* Program will create mock SNMP device containers for each ip_address: and first network_address: key detected in conf.yaml
+
+    * There is only 1 auto-discovery instance created from network_address: key as it is not feasible to test more than one auto-discovery subnet at a time
+
 `conf.yaml` should match what is shown in [example config file](https://github.com/DataDog/integrations-core/blob/master/snmp/datadog_checks/snmp/data/conf.yaml.example)
 
 * For now you will manually need to add ip addresses to your `instances` in your `.conf.yaml` file to an address within the `172.20.0.0/16` subnet. The program also loads the `_test_profile.yaml` configuration file to the `/etc/datadog-agent/conf.d/snmp.d/profiles` directory.
@@ -201,9 +205,6 @@ metrics:
 * A script will convert the `MIB` file and appened it to an exisiting `mocksnmp.snmprec` file within the appropriate appropriate `data` directory
 * You can now run the `run.sh` script from the main repo directory `SNMP-sandbox`
 
-Program will create mock SNMP device containers for each ip_address: and first network_address: key detected in conf.yaml
-
-There is only 1 auto-discovery instance created from network_address: key as it is not feasible to test more than one auto-discovery subnet at a time
 ## To Do
 * Add functionality for SNMP `v3` 
 * Add SNMP trap functionality
