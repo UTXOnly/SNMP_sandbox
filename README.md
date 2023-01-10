@@ -91,9 +91,9 @@ The run script builds fresh Docker images at runtime, leveraging the docker-comp
 
 ## Configuration Notes
 
-* Program will create mock SNMP device containers for each ip_address: and first network_address: key detected in conf.yaml
+* Program will create mock SNMP device containers for each `ip_address:` and first network_address: key detected in `conf.yaml`
 
-    * There is only 1 auto-discovery instance created from network_address: key as it is not feasible to test more than one auto-discovery subnet at a time
+    * There is only 1 auto-discovery instance created from `network_address:` key as it is not feasible to test more than one auto-discovery subnet at a time
 
 * `conf.yaml` should match what is shown in [example config file](https://github.com/DataDog/integrations-core/blob/master/snmp/datadog_checks/snmp/data/conf.yaml.example)
 
