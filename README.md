@@ -95,7 +95,7 @@ The run script builds fresh Docker images at runtime, leveraging the docker-comp
 
     * There is only 1 auto-discovery instance created from network_address: key as it is not feasible to test more than one auto-discovery subnet at a time
 
-`conf.yaml` should match what is shown in [example config file](https://github.com/DataDog/integrations-core/blob/master/snmp/datadog_checks/snmp/data/conf.yaml.example)
+* `conf.yaml` should match what is shown in [example config file](https://github.com/DataDog/integrations-core/blob/master/snmp/datadog_checks/snmp/data/conf.yaml.example)
 
 * For now you will manually need to add ip addresses to your `instances` in your `.conf.yaml` file to an address within the `172.20.0.0/16` subnet. The program also loads the `_test_profile.yaml` configuration file to the `/etc/datadog-agent/conf.d/snmp.d/profiles` directory.
 * Filename for custom profile to test must be `_test_profile.yaml` for the program to work properly
