@@ -201,11 +201,9 @@ metrics:
 * A script will convert the `MIB` file and appened it to an exisiting `mocksnmp.snmprec` file within the appropriate appropriate `data` directory
 * You can now run the `run.sh` script from the main repo directory `SNMP-sandbox`
 
-## Visual Diagram of Program
+Program will create mock SNMP device containers for each ip_address: and first network_address: key detected in conf.yaml
 
-![SNMP sandbox diagram (1)](https://user-images.githubusercontent.com/49233513/209253299-ac2baf21-ad5f-403f-b8b1-16329c3a2e54.png)
-
-
+There is only 1 auto-discovery instance created from network_address: key as it is not feasible to test more than one auto-discovery subnet at a time
 ## To Do
 * Add functionality for SNMP `v3` 
 * Add SNMP trap functionality
