@@ -6,7 +6,7 @@ A sandbox environment for testing custom SNMP profiles with Datadog Network Devi
 ##### Use Case
 To validate custom SNMP profiles along with Datadog agent configuration
 * Validate `conf.yaml` and `custom_profile` configuration in Datadog agent
-* Simulate a SNNP device being polled and reporting metrics to Datadog agent
+* Simulate a SNMP device being polled and reporting metrics to Datadog agent
 * Validate tags used and test custom dashboards
 
 ##### What you need to do
