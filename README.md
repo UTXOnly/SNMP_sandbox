@@ -68,6 +68,9 @@ The run script builds fresh Docker images at runtime, leveraging the docker-comp
     * When run from the `SNMP_sandbox` directory, copies configuration file to appropriate directory
   * `cp <Filepath_to_test_profile.yaml>/conf.yaml ./snmp/dd_configs/_test_profile.yaml`
     * When run from the `SNMP_sandbox` directory, copies custom profile to appropriate directory 
+    
+ ![SNMP containers (1)](https://user-images.githubusercontent.com/49233513/218288745-39359b3c-3a93-4fa3-a87b-dfa604a92f25.png)
+
 # TCPDUMP and Manual SNMP check
 * TCPDUMP and manual SNMP check will be placed in the `./snmp/tcpdump` directory
   * You will be prompted at the end of the run script if you would like to open the `.pcap` file in Wireshark, if you do not have it installed, the script will install it for you and open up the new `.pcap` file for your review.
