@@ -2,17 +2,14 @@
 import os
 import datetime
 
-
 os.system('source ./snmp/.env')
 BRed = '\033[1;31m'
 BGreen = '\033[1;32m'
 NC = '\033[0m'  # No Color
 
-
 os.system('python3 parse_conf.py')
 
 os.chdir('snmp')
-
 
 print(f"{BGreen}##################### Creating docker network############################{NC}")
 

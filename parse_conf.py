@@ -1,92 +1,78 @@
 #!/usr/bin/env python3
 import re
+from ruamel.yaml import YAML
+import logging
+import os
 
-def parse_yaml(filename, prefix=''):
-    data = {}
-    with open(filename) as f:
-        lines = f.readlines()
-    for line in lines:
-        line = line.strip()
-        if not line or line.startswith('#'):
-            continue
-        match = re.findall(r'^\s*([\w.-]+):\s*(.*)$', line)
-        if not match:
-            continue
-        key, value = match[0]
-        key = key.replace('-', '_')
-        if '.' in key:
-            parts = key.split('.')
-            d = data
-            for part in parts[:-1]:
-                d = d.setdefault(part, {})
-            d[parts[-1]] = _parse_value(value)
-        else:
-            data[key] = _parse_value(value)
+# Setup logging
+logger = logging.getLogger(__name__)
+logger.setLevel(logging.DEBUG)
+formatter = logging.Formatter('%(asctime)s - %(levelname)s - %(message)s')
+console_handler = logging.StreamHandler()
+console_handler.setLevel(logging.DEBUG)
+console_handler.setFormatter(formatter)
+logger.addHandler(console_handler)
 
-    result = {}
-    for key, value in data.items():
-        if prefix:
-            key = f"{prefix}_{key}"
-        if isinstance(value, dict):
-            result.update(parse_yaml(data[key], prefix=key))
-        else:
-            result[key] = value
-    return result
+# Add file handler to write logs to a file
+log_file = os.path.join(os.path.dirname(__file__), 'debug.log')
+file_handler = logging.FileHandler(log_file)
+file_handler.setLevel(logging.DEBUG)
+file_handler.setFormatter(formatter)
+logger.addHandler(file_handler)
+# Load the YAML file into a dictionary safely
+with open('./snmp/dd_config_files/conf.yaml') as file:
+    yaml = YAML(typ='safe')
+    config = yaml.load(file)
+    logger.debug("Loaded configuration from %s", file.name)
 
+# Extract all IP addresses from instances section
+ip_addresses = []
+for instance in config.get('instances', []):
+    ip_address = instance.get('ip_address')
+    if ip_address is not None:
+        ip_addresses.append(ip_address)
+        logger.debug("Extracted IP address %s from configuration", ip_address)
 
-def _parse_value(value):
-    try:
-        return int(value)
-    except ValueError:
-        pass
-    try:
-        return float(value)
-    except ValueError:
-        pass
-    if value == 'true':
-        return True
-    elif value == 'false':
-        return False
-    elif value == 'null':
-        return None
-    elif value.startswith(('"', "'")) and value.endswith(('"', "'")):
-        return value[1:-1]
-    return value
+docker_compose_file = './snmp/docker-compose.yaml'
 
-#!/usr/bin/env python3
-import re
-
-with open('./snmp/dd_config_files/conf.yaml') as f:
-    config = f.read()
-
-ips = []
-for match in re.findall(r'^\s*ip_address:\s*(.+)$', config, re.MULTILINE):
-    ips.append(match.strip())
-
-with open('./snmp/docker-compose.yaml', 'a') as f:
-    for ip_address in ips:
-        IPs = []
-        IPs.append(ip_address)
-        IPs_with_dashes = ip_address.replace('.', '-')
-        f.write(f'''
-container-{IPs_with_dashes}:
-    container_name: {IPs_with_dashes}-container
+with open(docker_compose_file, "a") as compose_file:
+    for ip_address in ip_addresses:
+        ips_with_dashes = ip_address.replace('.', '-')
+        ip_address_str = str(ip_address)
+        compose_file.write(f'''
+  container-{ips_with_dashes}:
+    container_name: {ips_with_dashes}-container
     image: bhartford419/snmp_container:latest
     environment:
-      - DD_TAGS=snmp_container:{ip_address}
+      - DD_TAGS=snmp_container:{ip_address_str}
     ports:
       - "161"
     volumes:
       - ./data/:/usr/local/share/snmpsim/data
     networks:
       static-network:
-        ipv4_address: {ip_address}
+        ipv4_address: {ip_address_str}
 ''')
+    logger.debug("Wrote container info to %s", docker_compose_file)
 
 
-    network_address = re.search(r'^\s*network_address:\s*(.+)$', config, re.MULTILINE)
-    for host in range(101, 105):
-        f.write(f'''
+
+
+
+with open('./snmp/dd_config_files/conf.yaml') as file:
+    config2 = file.read()
+
+    network_address = re.search(r'^\s*network_address:\s*(.+)$', config2, re.MULTILINE)
+    if network_address:
+        address = network_address.group(1)
+        print(f"Found network address: {address}")
+    else:
+        print("Network address not found in configuration")
+
+    #network_address = re.search(r'^\s*network_address:\s*(.+)$', config, re.MULTILINE)
+with open(docker_compose_file, "a") as compose_file:
+    for host in range(13, 15):
+        compose_file.write(f'''
   container-172-20-0-{host}:
       container_name: 172.20.0.{host}-container
       image: bhartford419/snmp_container:latest
@@ -101,8 +87,14 @@ container-{IPs_with_dashes}:
           ipv4_address: 172.20.0.{host}
     ''')
 
+    logger.debug("Appended additional container info to %s", docker_compose_file)
 
-    f.write('''
+# Append container info to docker-compose.yaml file for each IP address
+
+
+
+    compose_file.write(f'''
+
 networks:
   static-network:
     ipam:
