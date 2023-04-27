@@ -69,7 +69,8 @@ The run script builds fresh Docker images at runtime, leveraging the docker-comp
   * `cp <Filepath_to_test_profile.yaml>/conf.yaml ./snmp/dd_configs/_test_profile.yaml`
     * When run from the `SNMP_sandbox` directory, copies custom profile to appropriate directory 
     
-![SNMP containers (2)](https://user-images.githubusercontent.com/49233513/234732549-3d3f7506-bd89-492d-896e-0311c6e43a69.png)
+![SNMP containers (2) png 2023-04-26 at 10 22 46 PM](https://user-images.githubusercontent.com/49233513/234743635-0f24b7f1-3e41-4793-97f2-80421a0d26ce.jpg)
+
 
 
 # TCPDUMP and Manual SNMP check
