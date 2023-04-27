@@ -211,10 +211,10 @@ metrics:
 * You can now run the `run.sh` script from the main repo directory `SNMP-sandbox`
 
 ## To Do
-* Add functionality for SNMP `v3` 
-* Add SNMP trap functionality
-* Automatically assign ip addresses and snmp profiles if not using single snmprec
-* ~~Create conversion program to translate `snmpwalk` output to `.snmprec` format~~
+- [ ] Add functionality for SNMP `v3` 
+- [ ] Add SNMP trap functionality
+- [ ] Automatically assign ip addresses and snmp profiles if not using single snmprec
+- [X] Create conversion program to translate `snmpwalk` output to `.snmprec` format
 
   
 
