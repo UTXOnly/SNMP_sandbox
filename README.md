@@ -16,7 +16,7 @@ To validate custom SNMP profiles along with Datadog agent configuration
   * Can test individual instances or auto-discovery by using the `network_address:` key
 * Add custom SNMP profile
 * Place your `snmpwalk` output in the repo's `/conversion` directory (must be saved with the `.txt` file extension)
-* **Run 'python3 menu.py` to start using `NDM`/`NPM`**
+* **Run `python3 menu.py` to start using `NDM`/`NPM`**
 
 
 
