@@ -21,24 +21,7 @@ def build_venv_and_convert_snmpwalk():
     print_color("Venv and snmpwalk converted successfully!", "32")
 
 
-
-##def build_mocksnmp_containers():
- #   # get the full path to the directory containing the script
- #   script_dir = os.path.dirname(os.path.abspath(__file__))
- #   # set the path to the directory containing the docker-compose file
- #   compose_dir = os.path.join(script_dir, 'snmp')
- #   # change into that directory
- #   os.chdir(compose_dir)
- #   print(os.getcwd())
- #   # run the docker-compose build command with the new directory location
- #   subprocess.run(['docker-compose', '-f', 'docker-compose.yml', 'build', '.'], check=True)
-
-
-
 def start_containers():
-    # Activate virtual environment
-    # On Windows: .\snmpenv\Scripts\activate
-    # On Mac or Linux: source snmpenv/bin/activate
     subprocess.run(['bash', '-c', 'source snmpenv/bin/activate && python start_sandbox.py'], check=True)
     print_color("Containers started successfully!", "32")
 
@@ -52,7 +35,6 @@ def destroy_venv_and_containers():
     subprocess.run('rm -rf snmpenv', shell=True, check=True)
 
     print_color("Venv and containers destroyed successfully!", "31")
-
 
 # Main loop
 while True:
@@ -69,7 +51,6 @@ while True:
     if choice == "1":
         build_venv_and_convert_snmpwalk()
     elif choice == "2":
-        #build_mocksnmp_containers()
         start_containers()
     elif choice == "3":
         destroy_venv_and_containers()
