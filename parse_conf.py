@@ -13,12 +13,6 @@ console_handler.setLevel(logging.DEBUG)
 console_handler.setFormatter(formatter)
 logger.addHandler(console_handler)
 
-# Add file handler to write logs to a file
-log_file = os.path.join(os.path.dirname(__file__), 'debug.log')
-file_handler = logging.FileHandler(log_file)
-file_handler.setLevel(logging.DEBUG)
-file_handler.setFormatter(formatter)
-logger.addHandler(file_handler)
 # Load the YAML file into a dictionary safely
 with open('./snmp/dd_config_files/conf.yaml') as file:
     yaml = YAML(typ='safe')
