@@ -11,12 +11,12 @@ To validate custom SNMP profiles along with Datadog agent configuration
 
 ##### What you need to do
 * Clone the repository
-* Add a `./snmp/.env` file to add `DD_API_KEY`
+* Add a `./snmp/.env` file then add `DD_API_KEY=<YOUR_API_KEY_HERE>`
 * Add a `snmp.d/conf.yaml` file
-  * Optionally add `datadog.yaml` file for auto-discovery
+  * Can test individual instances or auto-discovery by using the `network_address:` key
 * Add custom SNMP profile
-* Use `convert.sh` script to create `.snmprec` file if needed
-* **Use `run.sh` script to run all containers and start using `NDM`/`NPM`**
+* Place your `snmpwalk` output in the repo's `/conversion` directory (must be saved with the `.txt` file extension)
+* **Run 'python3 menu.py` to start using `NDM`/`NPM`**
 
 
 
@@ -38,27 +38,7 @@ You can then add the necessary environment variables as depicted below:
 
 `DD_API_KEY= <YOUR_API_KEY_HERE>`
 
-##### File Placement
 
-
-
-
-https://user-images.githubusercontent.com/49233513/208342972-31622f9f-d6dd-47d3-9f68-a7cdf93a8477.mp4
-
-
-
-
-
-To run this script, simply run the follwing script from this repository's main directory(`SNMP_sandbox`).
-```
-./run.sh
-```
-The run script builds fresh Docker images at runtime, leveraging the docker-compose command to run these containers togehter.
-
-##### To stop the containers and destroy the Docker network and images created run the below command:
-```
-./destroy.sh
-```
 
 # Demonstration
 * Commands used to clone repo and move configuration files into the appropriate directories.

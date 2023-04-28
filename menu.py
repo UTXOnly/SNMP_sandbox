@@ -56,6 +56,7 @@ while True:
         destroy_venv_and_containers()
         break
     elif choice == "4":
+        print_color("Exited menu", "31")
         break
     else:
         print_color("Invalid choice. Please enter a valid option number.", "31")
