@@ -47,12 +47,7 @@ You can then add the necessary environment variables as depicted below:
 ## Starting SNMP and Datadog agent containers, collecting tcpdump and running manual debug check
 
 
-
-https://user-images.githubusercontent.com/49233513/235320313-62d56b0a-c687-4fa5-af43-5da98115161e.mp4
-
-
-
-
+![Screen Recording 2023-04-29 at 03 19 58 PM](https://user-images.githubusercontent.com/49233513/235320574-5582d615-f4e1-479b-979f-d17bd922d67e.gif)
 
 
 
