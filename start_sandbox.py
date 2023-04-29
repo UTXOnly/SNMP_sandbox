@@ -30,15 +30,15 @@ print(f"{BGreen}\n################## TCPDUMP started, please wait 30 seconds "
 timestamp = datetime.datetime.now().strftime('%m-%d-%Y')
 
 # Starting a tcpdump filtering traffic on port 161 to closer inspect 
-os.system(f'docker exec datadog-agent tcpdump -T snmp -c 400 '
+os.system(f'docker exec datadog-agent tcpdump -T snmp -c 30 '
           f'-w /tcpdumps/dump{timestamp}.pcap')
 
 print(f"{NC}\nWriting output of check to ./tcpdump/dump_{timestamp}.pcap")
 
-print(f"{BGreen}\nRunning comparison of OID's configured in profile to OID in snmprec{NC}")
-print(f"{BRed}\nThe following OID's in your snmp profile were configured\n{NC}")
+#print(f"{BGreen}\nRunning comparison of OID's configured in profile to OID in snmprec{NC}")
+#print(f"{BRed}\nThe following OID's in your snmp profile were configured\n{NC}")
 os.chdir('..')
-os.system('python3 compare.py')
+#os.system('python3 compare.py')
 
 print(f"{BGreen}\n################### Running SNMP check ####################################{NC}")
 print(f"{BRed}\nWriting output of check to ./tcpdump/debug_snmp_check.log{NC}")
