@@ -48,6 +48,12 @@ You can then add the necessary environment variables as depicted below:
 
 
 
+https://user-images.githubusercontent.com/49233513/235320313-62d56b0a-c687-4fa5-af43-5da98115161e.mp4
+
+
+
+
+
 
 
 * Commands used to clone repo and move configuration files into the appropriate directories.
