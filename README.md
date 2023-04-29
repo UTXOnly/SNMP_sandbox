@@ -44,6 +44,11 @@ You can then add the necessary environment variables as depicted below:
 ## Creating snmprec file and loading snmp config into Datadog agent
 ![Screen Recording 2023-04-28 at 08 24 41 PM](https://user-images.githubusercontent.com/49233513/235273010-c4dc5101-7900-4620-8b76-a3725ea76579.gif)
 
+## Starting SNMP and Datadog agent containers, collecting tcpdump and running manual debug check
+
+
+
+
 
 * Commands used to clone repo and move configuration files into the appropriate directories.
   * `git clone git@github.com:UTXOnly/SNMP_sandbox.git`
