@@ -49,6 +49,10 @@ You can then add the necessary environment variables as depicted below:
 
 ![Screen Recording 2023-04-29 at 03 19 58 PM](https://user-images.githubusercontent.com/49233513/235320574-5582d615-f4e1-479b-979f-d17bd922d67e.gif)
 
+## Analyzing tcpdump and manual debug check output
+
+![Screen Recording 2023-04-29 at 03 19 58 PM](https://user-images.githubusercontent.com/49233513/235320574-5582d615-f4e1-479b-979f-d17bd922d67e.gif)
+
 
 
 * Commands used to clone repo and move configuration files into the appropriate directories.
