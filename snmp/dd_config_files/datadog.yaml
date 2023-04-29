@@ -1,7 +1,0 @@
-
-network_config:
-  enabled: true
-
-process_config:
-  enabled: true
-
