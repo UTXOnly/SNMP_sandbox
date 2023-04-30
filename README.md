@@ -49,7 +49,8 @@ python3 menu.py
 
 This will bring up the main project menu which allows you to build, run and delete this sandbox
 
-![debug_snmp_check log — snmp-test 2023-04-28 at 8 48 44 PM](https://user-images.githubusercontent.com/49233513/235331523-c0eb4589-7c45-4573-82e3-2592beaf816b.jpg)
+![README md — snmp-test 2023-04-28 at 6 06 24 PM](https://user-images.githubusercontent.com/49233513/235331547-38061e3d-08a1-4622-b9ba-e13275d30cbd.jpg)
+
 
 
 
@@ -67,13 +68,7 @@ This will bring up the main project menu which allows you to build, run and dele
 ![Screen Recording 2023-04-29 at 03 44 07 PM (1)](https://user-images.githubusercontent.com/49233513/235321608-38efaa1e-99a7-42d1-a81f-79f3cc3ad881.gif)
 
 
-* Commands used to clone repo and move configuration files into the appropriate directories.
-  * `git clone git@github.com:UTXOnly/SNMP_sandbox.git`
-    *  This will clone the repo and create a new folder `SNMP_sandbox` , `run` and `destroy` commands are run from here
-  * `cp <Filepath_to_conf.yaml>/conf.yaml ./snmp/dd_configs.conf.yaml`
-    * When run from the `SNMP_sandbox` directory, copies configuration file to appropriate directory
-  * `cp <Filepath_to_test_profile.yaml>/conf.yaml ./snmp/dd_configs/_test_profile.yaml`
-    * When run from the `SNMP_sandbox` directory, copies custom profile to appropriate directory 
+### Visual diagram of how this program functions
     
 ![SNMP containers (2) png 2023-04-26 at 10 22 46 PM](https://user-images.githubusercontent.com/49233513/234743635-0f24b7f1-3e41-4793-97f2-80421a0d26ce.jpg)
 
