@@ -39,6 +39,19 @@ You can then add the necessary environment variables as depicted below:
 `DD_API_KEY= <YOUR_API_KEY_HERE>`
 
 
+### To start the main CLI menu
+
+Run the following command from the terminal in the main repo directory:
+
+```
+python3 menu.py
+```
+
+This will bring up the main project menu which allows you to build, run and delete this sandbox
+
+![debug_snmp_check log — snmp-test 2023-04-28 at 8 48 44 PM](https://user-images.githubusercontent.com/49233513/235331523-c0eb4589-7c45-4573-82e3-2592beaf816b.jpg)
+
+
 
 # Demonstration
 ## Creating snmprec file and loading snmp config into Datadog agent
