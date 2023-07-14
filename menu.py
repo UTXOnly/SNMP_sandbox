@@ -50,7 +50,7 @@ while True:
     print_color("4) Compare manually configed OID in custom profile to snmpwalk", "33")
     print_color("5) Exit menu", "32")
 
-    choice = input("\nEnter an option number (1-4): ")
+    choice = input("\nEnter an option number (1-5): ")
 
     if choice == "1":
         build_venv_and_convert_snmpwalk()
