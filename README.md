@@ -49,7 +49,8 @@ python3 menu.py
 
 This will bring up the main project menu which allows you to build, run and delete this sandbox
 
-![README md — snmp-test 2023-04-28 at 6 06 24 PM](https://user-images.githubusercontent.com/49233513/235331547-38061e3d-08a1-4622-b9ba-e13275d30cbd.jpg)
+![Image 2023-07-13 at 9 42 04 PM](https://github.com/UTXOnly/SNMP_sandbox/assets/49233513/7aee25f8-0f49-409d-9397-112d0059b0b0)
+
 
 
 
