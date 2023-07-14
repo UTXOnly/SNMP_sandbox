@@ -4,45 +4,22 @@ init_config:
   use_device_id_as_hostname: true
   profiles:
     custom-profile:
-      definition_file: _test_profile.yaml
+      definition_file: test_profile.yaml
       
 instances:
 
   - ip_address: 172.20.0.4
-    port: 161
     snmp_version: 2
+    community_string: mocksnmp
     profile: custom-profile
-    loader: core
-    community_string: 'mocksnmp'
-    use_device_id_as_hostname: true
+    tags:
+      - location:boston
   
-  - ip_address: 172.20.0.5
+  
+  - network_address: 172.20.0.0/24 #
+    snmp_version: 2
     port: 161
-    snmp_version: 2
+    community_string: mocksnmp
     profile: custom-profile
-    loader: core
-    community_string: 'mocksnmp'
-    use_device_id_as_hostname: true
-  
-  - ip_address: 172.20.0.6
-    port: 161
-    snmp_version: 2
-    profile: custom-profile
-    loader: core
-    community_string: 'mocksnmp'
-    use_device_id_as_hostname: true
-  
-  - ip_address: 172.20.0.7
-    port: 161
-    snmp_version: 2
-    profile: custom-profile
-    loader: core
-    community_string: 'mocksnmp'
-  
-  - network_address: 172.20.0.0/24 # CIDR subnet - 700 VPN ROUTER
-    snmp_version: 2
-    port: 161 # Default port is 161, as long as device is listening on port 161, you can omit this key:value pair
-    community_string: 'full'
-    #profile: custom-profile
     tags:
     - "auto-discovery:auto-discovered-device"

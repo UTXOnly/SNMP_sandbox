@@ -49,10 +49,6 @@ with open(docker_compose_file, "a") as compose_file:
 ''')
     logger.debug("Wrote container info to %s", docker_compose_file)
 
-
-
-
-
 with open('./snmp/dd_config_files/conf.yaml') as file:
     config2 = file.read()
 
@@ -84,9 +80,6 @@ with open(docker_compose_file, "a") as compose_file:
     logger.debug("Appended additional container info to %s", docker_compose_file)
 
 # Append container info to docker-compose.yaml file for each IP address
-
-
-
     compose_file.write(f'''
 
 networks:
