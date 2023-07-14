@@ -15,6 +15,7 @@ os.system("docker rmi $(docker image ls -a -q) -f")
 # remove directories
 os.system("sudo rm -r ./snmp/tcpdump")
 os.system("sudo rm -r ./parsed_yaml")
+os.system("sudo rm -r ./snmp/data/mocksnmp.snmprec")
 
 # OS specific commands to modify files
 if os.name == 'posix':

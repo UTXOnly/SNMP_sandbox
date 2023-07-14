@@ -18,7 +18,7 @@ def build_venv_and_convert_snmpwalk():
     ]
     for cmd in commands:
         subprocess.run(['bash', '-c', activate_cmd + cmd], check=True)
-    print_color("Venv and snmpwalk converted successfully!", "32")
+    print_color("\nVenv and snmpwalk converted successfully!", "32")
 
 
 def start_containers():
@@ -36,6 +36,9 @@ def destroy_venv_and_containers():
 
     print_color("Venv and containers destroyed successfully!", "31")
 
+def compare_oid():
+    subprocess.run(['bash', '-c', 'source snmpenv/bin/activate && python extract_oid.py'], check=True)
+
 # Main loop
 while True:
     print_color("##########################################################################################", "31")
@@ -44,7 +47,8 @@ while True:
     print_color("1) Build venv and convert snmpwalk", "32")
     print_color("2) Build mocksnmp containers + datadog agent and start containers", "32")
     print_color("3) Destroy venv and containers", "31")
-    print_color("4) Exit menu", "32")
+    print_color("4) Compare manually configed OID in custom profile to snmpwalk", "33")
+    print_color("5) Exit menu", "32")
 
     choice = input("\nEnter an option number (1-4): ")
 
@@ -56,6 +60,9 @@ while True:
         destroy_venv_and_containers()
         break
     elif choice == "4":
+        compare_oid()
+        break
+    elif choice == "5":
         print_color("Exited menu", "31")
         break
     else:
