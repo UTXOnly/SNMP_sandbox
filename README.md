@@ -24,9 +24,9 @@ To validate custom SNMP profiles along with Datadog agent configuration
 
 Simply clone the repo, add your custom SNMP profile to test along with `conf.yaml` file to test it against.
 
-* Custom profile to be tested must be named `_test_profile.yaml` and configuration file named `conf.yaml`
-* Both `_test_profile.yaml` and `conf.yaml` must be placed in the `/snmp/dd_configs` directory of this repo for this program to run properly
-* The Datadog agent will only collect metrics that are defined in a profile, if the `OID` isn't in the `.snmprec` file, it won't be collected by Datadog
+* Custom profile to be tested must be named `test_profile.yaml` and configuration file named `conf.yaml`
+* Both `test_profile.yaml` and `conf.yaml` must be placed in the `/snmp/dd_configs` directory of this repo for this program to run properly
+* The Datadog agent will only collect metrics that are defined in a profile, also if the `OID` isn't in the `.snmprec` file, it won't be collected by Datadog
 
 This script requires a `.env` file to be placed in the `snmp/` directory for `docker-compose` to read it. Your `.env` file should contain environmental variables needed for your docker containers, in this case your `DD_API_KEY`. The rest of the env var can be added in the `docker-compose.yaml` file.
 
@@ -108,8 +108,8 @@ You can select option 4 on the menu to compare the oid configured in your custom
 
 * `conf.yaml` should match what is shown in [example config file](https://github.com/DataDog/integrations-core/blob/master/snmp/datadog_checks/snmp/data/conf.yaml.example)
 
-* For now you will manually need to add ip addresses to your `instances` in your `.conf.yaml` file to an address within the `172.20.0.0/16` subnet. The program also loads the `_test_profile.yaml` configuration file to the `/etc/datadog-agent/conf.d/snmp.d/profiles` directory.
-* Filename for custom profile to test must be `_test_profile.yaml` for the program to work properly
+* For now you will manually need to add ip addresses to your `instances` in your `.conf.yaml` file to an address within the `172.20.0.0/16` subnet. The program also loads the `test_profile.yaml` configuration file to the `/etc/datadog-agent/conf.d/snmp.d/profiles` directory.
+* Filename for custom profile to test must be `test_profile.yaml` for the program to work properly
 
 * Below is the example `conf.yaml` file included in this repo, this will work right out of the box.
 ```
@@ -118,7 +118,7 @@ init_config:
   use_device_id_as_hostname: true
   profiles:
     custom-profile:
-      definition_file: _test_profile.yaml
+      definition_file: test_profile.yaml
       
 instances:
 
@@ -220,6 +220,7 @@ metrics:
 - [ ] Add functionality for SNMP `v3` 
 - [ ] Add SNMP trap functionality
 - [ ] Automatically assign ip addresses and snmp profiles if not using single snmprec
+- [ ] Change `run.sh` script for converting MIB to snmprec to a python script, add to main menu
 - [X] Add autodiscovery functionality
 - [X] Create conversion program to translate `snmpwalk` output to `.snmprec` format
 
