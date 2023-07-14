@@ -7,8 +7,8 @@ services:
       ## GLOBALS
     - DD_API_KEY=${DD_API_KEY}
     - DD_SITE=datadoghq.com
-    - DD_HOSTNAME=brian.snmp.sandbox.docker
-    - DD_TAGS=env:sandbox owner:brian
+    - DD_HOSTNAME=snmp.sandbox.docker
+    - DD_TAGS=env:sandbox owner:dd_sandbox
     - DD_DOGSTATSD_NON_LOCAL_TRAFFIC=true
     - DD_DOCKER_LABELS_AS_TAGS=true
     - DD_DOCKER_ENV_AS_TAGS=true
@@ -34,3 +34,50 @@ services:
     networks:
       static-network:
         ipv4_address: 172.20.0.2
+
+  container-172-20-0-4:
+    container_name: 172-20-0-4-container
+    image: bhartford419/snmp_container:latest
+    environment:
+      - DD_TAGS=snmp_container:172.20.0.4
+    ports:
+      - "161"
+    volumes:
+      - ./data/:/usr/local/share/snmpsim/data
+    networks:
+      static-network:
+        ipv4_address: 172.20.0.4
+
+  container-172-20-0-13:
+      container_name: 172.20.0.13-container
+      image: bhartford419/snmp_container:latest
+      environment:
+        - DD_TAGS=snmp_container:172.20.0.13,auto-discovery:auto-discovered-device
+      ports:
+        - "161"
+      volumes:
+        - ./data/:/usr/local/share/snmpsim/data
+      networks:
+        static-network:
+          ipv4_address: 172.20.0.13
+    
+  container-172-20-0-14:
+      container_name: 172.20.0.14-container
+      image: bhartford419/snmp_container:latest
+      environment:
+        - DD_TAGS=snmp_container:172.20.0.14,auto-discovery:auto-discovered-device
+      ports:
+        - "161"
+      volumes:
+        - ./data/:/usr/local/share/snmpsim/data
+      networks:
+        static-network:
+          ipv4_address: 172.20.0.14
+    
+
+networks:
+  static-network:
+    ipam:
+      config:
+        - subnet: 172.20.0.0/24
+    
