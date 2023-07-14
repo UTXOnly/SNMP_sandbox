@@ -93,6 +93,10 @@ This will bring up the main project menu which allows you to build, run and dele
 
 
 
+## Comparing OID configured in custom profile to snmpwalk
+You can select option 4 on the menu to compare the oid configured in your custom profile to the snmpwalk output you have loaded to easily identify OID that were configured in the profile but are not present in the snmpwalk.
+
+![Image 2023-07-13 at 9 48 01 PM](https://github.com/UTXOnly/SNMP_sandbox/assets/49233513/258e2c31-f673-4156-9387-79ae61f6e1d7)
 
 
 
@@ -216,6 +220,7 @@ metrics:
 - [ ] Add functionality for SNMP `v3` 
 - [ ] Add SNMP trap functionality
 - [ ] Automatically assign ip addresses and snmp profiles if not using single snmprec
+- [X] Add autodiscovery functionality
 - [X] Create conversion program to translate `snmpwalk` output to `.snmprec` format
 
   
