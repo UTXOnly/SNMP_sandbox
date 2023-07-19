@@ -209,12 +209,7 @@ metrics:
       - OID: 1.3.6.1.2.1.6.0
         name: tcpActiveOpens # what to use in the metric name; can be anything
   ```
-  
-  ##### How to create your own snmprec files
-* From the `conversion` directory, run the `convert.sh` script
-* You will be prompted to enter a `MIB` name. Please select any available MIB on [Best Monitoring Tools](https://bestmonitoringtools.com/mibdb/mibdb_search.php)
-* A script will convert the `MIB` file and appened it to an exisiting `mocksnmp.snmprec` file within the appropriate appropriate `data` directory
-* You can now run the `run.sh` script from the main repo directory `SNMP-sandbox`
+
 
 ## To Do
 - [ ] Add functionality for SNMP `v3` 
